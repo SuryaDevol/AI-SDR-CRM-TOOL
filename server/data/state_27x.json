@@ -1,0 +1,117 @@
+{
+  "mode": "copilot",
+  "verifiedContactsCount": 384520242,
+  "pipelineSpeedMultiplier": 27.4,
+  "agents": [
+    {
+      "id": "agent-sdr",
+      "name": "Autonomous AI SDR",
+      "role": "Outbound Prospecting & 1:1 Personalization",
+      "status": "active",
+      "mode": "autopilot",
+      "model": "Claude 3.5 Sonnet / GPT-4o",
+      "icon": "sparkles",
+      "stats": {
+        "contactsResearched": 1420,
+        "draftsCreated": 840,
+        "conversionLift": "27.4x"
+      },
+      "description": "Scans 380M+ contacts, studies buyer digital footprint & tech stack, writes hyper-personalized emails and LinkedIn InMails."
+    },
+    {
+      "id": "agent-qualifier",
+      "name": "Inbound ICP Lead Qualifier",
+      "role": "Account Scoring & Signal Intelligence",
+      "status": "active",
+      "mode": "copilot",
+      "model": "GPT-4o Enterprise",
+      "icon": "target",
+      "stats": {
+        "accountsEvaluated": 612,
+        "icpFitScore": "96.2%",
+        "flaggedHighIntent": 128
+      },
+      "description": "Scores website visitors and inbound demo requests against ICP criteria in real time, routing tier-1 accounts directly to rep."
+    },
+    {
+      "id": "agent-scheduler",
+      "name": "Autonomous Meeting Scheduler",
+      "role": "Calendar Coordination & Auto-Booking",
+      "status": "active",
+      "mode": "autopilot",
+      "model": "Claude 3.5 Sonnet",
+      "icon": "calendar-check",
+      "stats": {
+        "demosBookedThisMonth": 54,
+        "avgBookingSpeed": "4m 12s",
+        "noShowRate": "3.1%"
+      },
+      "description": "Evaluates high purchase interest in emails/calls, checks rep calendar availability, and locks confirmed Google Meet demo invites."
+    },
+    {
+      "id": "agent-cti",
+      "name": "Speed-to-Lead Aircall CTI Agent",
+      "role": "Live Phone Telephony & Inbox-to-Ringtone",
+      "status": "active",
+      "mode": "autopilot",
+      "model": "WebAudio Synth + Aircall CTI",
+      "icon": "phone-forwarded",
+      "stats": {
+        "connectRate": "68.4%",
+        "triggerLatency": "<3 mins",
+        "liveCallsPlaced": 38
+      },
+      "description": "Triggers outbound calls via Aircall within 5 minutes of an email open or click, popping battlecards with full context."
+    },
+    {
+      "id": "agent-crm-sync",
+      "name": "CRM Enrichment & Hygiene Agent",
+      "role": "HubSpot & Salesforce Two-Way Sync",
+      "status": "active",
+      "mode": "autopilot",
+      "model": "DataSync Engine",
+      "icon": "database",
+      "stats": {
+        "fieldsEnriched": 4920,
+        "duplicatesEliminated": 184,
+        "lastSync": "Just now"
+      },
+      "description": "Continuously enriches CRM accounts with verified phone lines, tech stack changes, and logs every touchpoint automatically."
+    }
+  ],
+  "approvalQueue": [],
+  "intentSignals": [
+    {
+      "id": "sig-01",
+      "type": "funding",
+      "title": "$24M Series B Announced",
+      "company": "ApexAI Cloud",
+      "date": "Yesterday",
+      "impact": "High Budget Unlocked"
+    },
+    {
+      "id": "sig-02",
+      "type": "hiring",
+      "title": "Hiring 8 Enterprise AEs & SDRs",
+      "company": "KubeVelocity",
+      "date": "3 days ago",
+      "impact": "Sales Expansion"
+    },
+    {
+      "id": "sig-03",
+      "type": "tech",
+      "title": "Adopted Snowflake & Kubernetes",
+      "company": "FinPulse Health",
+      "date": "1 week ago",
+      "impact": "Modern Tech Stack"
+    },
+    {
+      "id": "sig-04",
+      "type": "intent",
+      "title": "Researching Outbound Automation Tools",
+      "company": "Starlight Logistics",
+      "date": "2 hours ago",
+      "impact": "Active In-Market Buyer"
+    }
+  ]
+}

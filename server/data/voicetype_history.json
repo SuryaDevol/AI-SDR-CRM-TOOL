@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1793507156916,
+    "timestamp": "2026-11-01T04:25:56",
+    "raw_text": "um tested clean human code new line working perfectly thumbs up",
+    "final_text": "Tested clean human code\nworking perfectly👍 ",
+    "language": "en",
+    "duration_sec": 2.4,
+    "latency_sec": 0.233,
+    "num_words": 6,
+    "app_window": "VoiceType Studio"
+  },
+  {
+    "id": 1793505564326,
+    "timestamp": "2026-11-01T03:59:24",
+    "raw_text": "um checking the exact clone ui ux new line everything looks gorgeous smiley face",
+    "final_text": "Checking the exact clone ui ux\neverything looks gorgeous😊 ",
+    "language": "en",
+    "duration_sec": 3.5,
+    "latency_sec": 0.183,
+    "num_words": 9,
+    "app_window": "VoiceType Standalone App"
+  },
+  {
+    "id": 1793505330488,
+    "timestamp": "2026-11-01T03:55:30",
+    "raw_text": "um hello Sarah uh saw your post on LinkedIn new line would love to connect and share how 27x ai accelerates meetings thumbs up",
+    "final_text": "Hello Sarah saw your post on LinkedIn\nwould love to connect and share how 27x ai accelerates meetings👍 ",
+    "language": "en",
+    "duration_sec": 4.2,
+    "latency_sec": 0.327,
+    "num_words": 18,
+    "app_window": "Active Caret"
+  },
+  {
+    "id": 1793504693262,
+    "timestamp": "2026-11-01T03:44:53",
+    "raw_text": "ah launching the new campaign rocket ship",
+    "final_text": "Launching the new campaign🚀 ",
+    "language": "en",
+    "duration_sec": 2.1,
+    "latency_sec": 0.333,
+    "num_words": 4,
+    "app_window": "Email Studio"
+  },
+  {
+    "id": 1793504417440,
+    "timestamp": "2026-11-01T03:40:17",
+    "raw_text": "um hello Sarah uh saw your post on LinkedIn new line would love to connect and share how 27x ai accelerates meetings thumbs up",
+    "final_text": "Hello Sarah saw your post on LinkedIn\nwould love to connect and share how 27x ai accelerates meetings👍 ",
+    "language": "en",
+    "duration_sec": 4.2,
+    "latency_sec": 0.261,
+    "num_words": 18,
+    "app_window": "Email Studio"
+  },
+  {
+    "id": 1,
+    "timestamp": "2026-10-31T15:20:12",
+    "raw_text": "um hi Sarah uh saw your post regarding AI outbound new line would love to connect and share how 27x ai accelerates meetings",
+    "final_text": "Hi Sarah saw your post regarding AI outbound\nwould love to connect and share how 27x ai accelerates meetings ",
+    "language": "en",
+    "duration_sec": 4.2,
+    "latency_sec": 0.38,
+    "num_words": 19,
+    "app_window": "Email Studio - OmniReach"
+  },
+  {
+    "id": 2,
+    "timestamp": "2026-10-31T16:05:44",
+    "raw_text": "hey David ah following up on our call earlier today new paragraph let's schedule a 15 minute demo next Tuesday thumbs up",
+    "final_text": "Hey David following up on our call earlier today\n\nlet's schedule a 15 minute demo next Tuesday 👍 ",
+    "language": "en",
+    "duration_sec": 5.1,
+    "latency_sec": 0.41,
+    "num_words": 19,
+    "app_window": "Aircall CTI - Call Log Note"
+  },
+  {
+    "id": 3,
+    "timestamp": "2026-10-31T17:10:02",
+    "raw_text": "er noting that customer requested a customized proposal for enterprise tier new line follow up on Thursday",
+    "final_text": "Noting that customer requested a customized proposal for enterprise tier\nfollow up on Thursday ",
+    "language": "en",
+    "duration_sec": 3.6,
+    "latency_sec": 0.32,
+    "num_words": 15,
+    "app_window": "CRM Lead Notes - Stripe Enterprise"
+  }
+]

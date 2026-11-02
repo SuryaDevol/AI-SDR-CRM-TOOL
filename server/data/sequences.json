@@ -1,0 +1,126 @@
+[
+  {
+    "id": "seq-01",
+    "name": "High-Growth SaaS Enterprise Hunter",
+    "description": "Multi-channel sequence targeting VP/CROs at Series A-C SaaS companies. Combines AI research, personalized email, LinkedIn touchpoints, and conversational voice qualification.",
+    "status": "Active",
+    "enrolledLeads": 4,
+    "replyRate": "34.2%",
+    "meetingRate": "18.5%",
+    "steps": [
+      {
+        "step": 1,
+        "channel": "research",
+        "action": "AI Deep Research & ICP Enrichment",
+        "delay": "Immediate",
+        "details": "Scrapes recent news, funding announcements, tech stack, and generates personalized icebreakers."
+      },
+      {
+        "step": 2,
+        "channel": "email",
+        "action": "Personalized Hook & Value Prop Email",
+        "delay": "Day 1 (09:15 AM)",
+        "details": "Reference recent company milestone or hiring trigger. Deliverability score > 95% required."
+      },
+      {
+        "step": 3,
+        "channel": "linkedin",
+        "action": "Profile View & Tailored Connection Note",
+        "delay": "Day 2 (+24 hours)",
+        "details": "Connect with personalized note (<300 chars) referencing company expansion."
+      },
+      {
+        "step": 4,
+        "channel": "aircall",
+        "action": "Aircall Sales Call: Inbox to Ringtone",
+        "delay": "Day 3 (Or immediately when Email Opened > 1x)",
+        "details": "Triggers Aircall dialler with previous email/LinkedIn context pop. AI live script + one-click automatic follow-ups."
+      },
+      {
+        "step": 5,
+        "channel": "email",
+        "action": "Value-Add Follow-up / Break-up with Asset",
+        "delay": "Day 7 (+3 days)",
+        "details": "Sends ROI case study and instant calendar booking link if unbooked."
+      }
+    ]
+  },
+  {
+    "id": "seq-02",
+    "name": "DevOps & Engineering Inbound/Outbound Sprint",
+    "description": "High-signal sequence for CTOs and VPs of Engineering focusing on technical architecture and zero-friction developer trials.",
+    "status": "Active",
+    "enrolledLeads": 2,
+    "replyRate": "28.0%",
+    "meetingRate": "14.0%",
+    "steps": [
+      {
+        "step": 1,
+        "channel": "research",
+        "action": "GitHub & Engineering Stack Scan",
+        "delay": "Immediate",
+        "details": "Identifies Kubernetes/Cloud providers and developer tooling pain points."
+      },
+      {
+        "step": 2,
+        "channel": "email",
+        "action": "Technical Architecture Value Pitch",
+        "delay": "Day 1",
+        "details": "Focus on latency, cost optimization, and developer productivity."
+      },
+      {
+        "step": 3,
+        "channel": "linkedin",
+        "action": "Engage Technical Post & Connection Request",
+        "delay": "Day 3",
+        "details": "Contextual comment followed by connection note."
+      },
+      {
+        "step": 4,
+        "channel": "aircall",
+        "action": "Technical Aircall Consultation",
+        "delay": "Day 5",
+        "details": "Aircall sales dial with engineer architecture battlecard and one-click trial provisioning."
+      }
+    ]
+  },
+  {
+    "id": "seq-03",
+    "name": "Aircall Speed-to-Lead: Inbox to Ringtone",
+    "description": "High-velocity sales workflow. Bridges email opens and LinkedIn acceptances into instant Aircall ringtones with pre-loaded AI objection scripts.",
+    "status": "Active",
+    "enrolledLeads": 4,
+    "replyRate": "46.8%",
+    "meetingRate": "28.4%",
+    "steps": [
+      {
+        "step": 1,
+        "channel": "email",
+        "action": "High-Intent Signal Cold Pitch",
+        "delay": "Immediate",
+        "details": "Personalized email referencing prospect funding/milestone with tracked demo link."
+      },
+      {
+        "step": 2,
+        "channel": "aircall",
+        "action": "Inbox-to-Ringtone Instant Aircall Dial",
+        "delay": "Auto-Triggered within 5 mins of Email Open",
+        "details": "Rings rep Aircall phone. Pops screen with email opened, bio, and live AI opening bridge."
+      },
+      {
+        "step": 3,
+        "channel": "linkedin",
+        "action": "Immediate Post-Call Social Connection",
+        "delay": "+15 mins post-call",
+        "details": "Auto-dispatches LinkedIn message referencing the Aircall phone conversation."
+      },
+      {
+        "step": 4,
+        "channel": "email",
+        "action": "1-Click Post-Call Meeting Summary & Invite",
+        "delay": "Instant on Call Complete",
+        "details": "AI-drafted recap email with confirmed Google Meet invite link dispatched without breaking rep flow."
+      }
+    ]
+  }
+]

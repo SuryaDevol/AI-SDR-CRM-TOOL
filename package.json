@@ -1,0 +1,22 @@
+{
+  "name": "omnireach-ai-crm",
+  "version": "2.0.0",
+  "description": "OmniReach AI — Autonomous AI CRM & Multi-Channel Outreach Engine (Research, Email, LinkedIn & End-to-End Voice Calls)",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js",
+    "serve": "node server/server.js"
+  },
+  "keywords": [
+    "crm",
+    "ai-outreach",
+    "cold-email",
+    "linkedin-automation",
+    "voice-ai-calling",
+    "autonomous-sdr",
+    "lead-generation"
+  ],
+  "author": "OmniReach AI",
+  "license": "MIT"
+}

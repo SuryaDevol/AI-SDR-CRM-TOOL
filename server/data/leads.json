@@ -1,0 +1,432 @@
+[
+  {
+    "id": "lead-01",
+    "name": "Sarah Chen",
+    "title": "Chief Revenue Officer (CRO)",
+    "company": "ApexAI Cloud",
+    "website": "https://apexai.cloud",
+    "industry": "Enterprise AI & Cloud Infrastructure",
+    "location": "San Francisco, CA",
+    "companySize": "120-250 employees",
+    "annualRevenue": "$24M ARR",
+    "email": "sarah.chen@apexai.cloud",
+    "phone": "+1 (415) 672-9104",
+    "linkedin": "linkedin.com/in/sarahchen-cro",
+    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+    "status": "Outreach Active",
+    "fitScore": 96,
+    "intentScore": 92,
+    "dealValue": 48000,
+    "research": {
+      "executiveBio": "14+ years scaling high-growth B2B revenue teams; ex-VP Sales at Datadog. Focused on expanding mid-market ARR and reducing SDR customer acquisition costs.",
+      "companySummary": "ApexAI Cloud provides automated observability and Kubernetes optimization for mission-critical enterprise workloads.",
+      "recentTriggers": [
+        "Announced $35M Series B funding round led by Sequoia Capital",
+        "Hiring 15 enterprise Account Executives and SDRs",
+        "Recent LinkedIn post discussing outbound conversion bottlenecks and desire for AI automation"
+      ],
+      "techStack": [
+        "Salesforce",
+        "Outreach.io",
+        "Gong",
+        "Snowflake",
+        "Slack"
+      ],
+      "painPoints": [
+        "Manual prospecting takes 3.5 hours per SDR per day",
+        "Cold email open rates dropped from 38% to 19% after Google/Yahoo spam updates",
+        "Difficulty scaling phone outreach without hiring 10+ extra headcount"
+      ],
+      "valueProp": "OmniReach AI deploys autonomous AI SDR agents across Email, LinkedIn, and Voice Calls to double pipeline generation while slashing outbound CAC by 65%.",
+      "icebreaker": "Loved your keynote at SaaStr on decoupling outbound quota from headcount—especially your point on intent-driven multi-touch prospecting!"
+    },
+    "channels": {
+      "email": {
+        "status": "sent",
+        "subject": "Quick question on ApexAI's outbound pipeline post-Series B",
+        "body": "Hi Sarah,\n\nCongrats on the $35M Series B! Loved your point at SaaStr about decoupling outbound quota from headcount.\n\nMost CROs at this stage see SDRs spending 60% of their time researching and manually dialling instead of speaking with qualified buyers.\n\nWe built OmniReach AI to automate multi-channel research, LinkedIn touchpoints, and conversational voice qualification. For teams scaling past $20M ARR, it typically books 3.4x more executive meetings with zero manual prospecting grind.\n\nOpen to a brief 7-minute look this Thursday at 2 PM PT?\n\nBest,\nAlex Morgan\nHead of AI Automation | OmniReach",
+        "sentAt": "11/2/2026, 6:00:32 PM",
+        "opens": 0,
+        "clicks": 0
+      },
+      "linkedin": {
+        "status": "pending",
+        "connectionNote": "Hi Sarah, saw ApexAI's Series B announcement and your SaaStr keynote on scaling revenue teams without headcount bloat. Would love to connect and share notes on autonomous SDR workflows!",
+        "inMailText": "Sarah - quick congrats on the Series B! Given your expansion in enterprise accounts, curious if your revenue team has tested autonomous multi-channel AI prospecting yet? We've seen teams like yours double executive demo rates. Would love your perspective.",
+        "socialActions": [
+          {
+            "action": "Profile Viewed",
+            "timestamp": "2026-10-27 10:15"
+          },
+          {
+            "action": "Liked post about Series B expansion",
+            "timestamp": "2026-10-27 11:30"
+          }
+        ]
+      },
+      "call": {
+        "status": "pending",
+        "callScript": "Hi Sarah, Alex here from OmniReach AI. I know I caught you in the middle of a busy day—quick 30 seconds? I saw ApexAI just closed Series B and is hiring 15 SDRs. We help high-growth SaaS teams automate end-to-end outbound research, LinkedIn sequences, and interactive phone calls so your reps only get on calls with pre-qualified buyers. Does it make sense to explore this for Q4?",
+        "objectionPlan": {
+          "busy": "Totally get it Sarah. How about I shoot over a 2-minute interactive demo to sarah.chen@apexai.cloud, and we chat Thursday morning for 5 minutes?",
+          "budget": "Completely understand. Most teams actually deploy us to reduce their current software spend on 4 different disconnected tools while doubling output.",
+          "send_email": "Done! I'll include the benchmark report on Series B outbound efficiency. What's the best time to follow up after you review it?",
+          "competitor": "We love Outreach/Salesloft—in fact, OmniReach integrates directly into Salesforce to automate the actual intelligence gathering and live calling that reps still do manually."
+        },
+        "transcript": [],
+        "callDuration": "0s",
+        "sentiment": "Neutral",
+        "meetingBooked": false,
+        "meetingTime": null
+      }
+    },
+    "timeline": [
+      {
+        "id": "t-1793622632512",
+        "type": "research",
+        "title": "Autonomous SDR Agent Swarm Executed",
+        "description": "AI Swarm executed 5-step autonomous cycle: Research -> Strategic Channel Selection -> Copywriting -> Omnichannel Dispatch.",
+        "timestamp": "11/2/2026, 6:00:32 PM"
+      },
+      {
+        "id": "t-1793464215043",
+        "type": "email",
+        "title": "27x Copilot: Approved & Dispatched EMAIL",
+        "description": "Dispatched to Sarah Chen (ApexAI Cloud) following manual review. Confidence: 96%.",
+        "timestamp": "10/31/2026, 10:00:15 PM"
+      },
+      {
+        "id": "t-1793262103508",
+        "type": "research",
+        "title": "Autonomous SDR Agent Swarm Executed",
+        "description": "AI Swarm executed 5-step autonomous cycle: Research -> Strategic Channel Selection -> Copywriting -> Omnichannel Dispatch.",
+        "timestamp": "10/29/2026, 1:51:43 PM"
+      },
+      {
+        "id": "t-1",
+        "type": "research",
+        "title": "AI Deep Research Completed",
+        "description": "Gathered Series B funding data, hiring signals, and pain point analysis with 96% fit score.",
+        "timestamp": "2026-10-28 09:20"
+      }
+    ]
+  },
+  {
+    "id": "lead-02",
+    "name": "Marcus Vance",
+    "title": "VP of Engineering & DevOps",
+    "company": "KubeVelocity Systems",
+    "website": "https://kubevelocity.io",
+    "industry": "DevSecOps & Cloud Infrastructure",
+    "location": "Austin, TX",
+    "companySize": "60-150 employees",
+    "annualRevenue": "$14M ARR",
+    "email": "marcus.v@kubevelocity.io",
+    "phone": "+1 (512) 402-8819",
+    "linkedin": "linkedin.com/in/marcus-vance-devops",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    "status": "Outreach Active",
+    "fitScore": 89,
+    "intentScore": 85,
+    "dealValue": 32000,
+    "research": {
+      "executiveBio": "Former Senior Director at HashiCorp. Deep technical background in CI/CD pipelines, Kubernetes orchestration, and cloud infrastructure security.",
+      "companySummary": "KubeVelocity automates zero-downtime microservice deployments across multi-cloud environments.",
+      "recentTriggers": [
+        "Launched new GitOps continuous deployment feature",
+        "Expanding engineering team by 40% across US and Europe",
+        "Actively reviewing automated workflow and CRM developer integrations"
+      ],
+      "techStack": [
+        "AWS",
+        "GitHub Actions",
+        "Kubernetes",
+        "Datadog",
+        "HubSpot"
+      ],
+      "painPoints": [
+        "Engineering leadership overwhelmed by irrelevant vendor cold pitches",
+        "Need developer-friendly APIs and high reliability without spam triggers",
+        "Looking for programmatic integrations into existing CRM pipelines"
+      ],
+      "valueProp": "Turn developer and technical prospect interactions into high-fidelity AI-qualified meetings with programmatic API hooks and transparent context.",
+      "icebreaker": "Really enjoyed your GitHub engineering blog post on solving multi-cluster service mesh latency—clean approach to canary rollouts!"
+    },
+    "channels": {
+      "email": {
+        "status": "opened",
+        "subject": "Canary rollouts & scaling outbound engineering pipelines",
+        "body": "Hi Marcus,\n\nRead your engineering breakdown on multi-cluster service mesh latency—impressive how you handled zero-downtime canary rollouts.\n\nReaching out because DevOps leaders often tell us sales outreach is noisy and untargeted. We built OmniReach AI to enable precise, signal-based outreach that only triggers when companies actively post engineering signals.\n\nWould you be open to seeing how other DevOps founders are using AI SDRs to drive high-intent pilot users?\n\nBest,\nAlex",
+        "sentAt": "2026-10-27 14:10",
+        "opens": 3,
+        "clicks": 1
+      },
+      "linkedin": {
+        "status": "connected",
+        "connectionNote": "Hi Marcus - great blog post on Kubernetes latency. Always great connecting with infrastructure leaders in Austin!",
+        "inMailText": "Marcus, thanks for connecting! Saw KubeVelocity's new GitOps release. Curious how you guys are handling inbound vs outbound developer acquisition this quarter?",
+        "socialActions": [
+          {
+            "action": "Connection Accepted",
+            "timestamp": "2026-10-27 16:45"
+          }
+        ]
+      },
+      "call": {
+        "status": "pending",
+        "callScript": "Hi Marcus, Alex from OmniReach. Reaching out following our LinkedIn chat regarding KubeVelocity's new GitOps launch. We help technical SaaS companies run automated, ultra-personalized outreach that resonates with engineers without feeling like spam. Have 2 minutes?",
+        "objectionPlan": {
+          "busy": "No problem Marcus, let's keep it async. Mind if I send a 60-second Loom over Slack or email?",
+          "budget": "Understood, our pricing scales strictly with qualified pipeline delivered so there is zero upfront friction.",
+          "send_email": "Sure thing! Sending the brief overview right to marcus.v@kubevelocity.io now."
+        },
+        "transcript": [],
+        "callDuration": "0s",
+        "sentiment": "Neutral",
+        "meetingBooked": false,
+        "meetingTime": null
+      }
+    },
+    "timeline": [
+      {
+        "id": "t-1793464215045",
+        "type": "linkedin",
+        "title": "27x Copilot: Approved & Dispatched LINKEDIN",
+        "description": "Dispatched to Marcus Vance (KubeVelocity) following manual review. Confidence: 94%.",
+        "timestamp": "10/31/2026, 10:00:15 PM"
+      },
+      {
+        "id": "t-2",
+        "type": "email",
+        "title": "Email Opened 3 Times",
+        "description": "Recipient opened 'Canary rollouts & scaling outbound' and clicked demo link.",
+        "timestamp": "2026-10-27 15:02"
+      },
+      {
+        "id": "t-3",
+        "type": "linkedin",
+        "title": "LinkedIn Request Accepted",
+        "description": "Marcus accepted connection invitation.",
+        "timestamp": "2026-10-27 16:45"
+      }
+    ]
+  },
+  {
+    "id": "lead-03",
+    "name": "Elena Rostova",
+    "title": "Chief Executive Officer & Founder",
+    "company": "FinPulse Health",
+    "website": "https://finpulsehealth.com",
+    "industry": "HealthTech / FinTech SaaS",
+    "location": "Boston, MA",
+    "companySize": "40-90 employees",
+    "annualRevenue": "$8.5M ARR",
+    "email": "elena@finpulsehealth.com",
+    "phone": "+1 (617) 554-3291",
+    "linkedin": "linkedin.com/in/elena-rostova-ceo",
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
+    "status": "Outreach Active",
+    "fitScore": 98,
+    "intentScore": 95,
+    "dealValue": 60000,
+    "research": {
+      "executiveBio": "MD & MBA, serial founder. Previously founded MedBill AI (acquired for $42M). Passionate about reducing administrative overhead in healthcare revenue cycle management.",
+      "companySummary": "FinPulse Health provides AI-driven medical billing compliance and claims dispute automation for healthcare networks.",
+      "recentTriggers": [
+        "Closed $12M Series A led by Bessemer Venture Partners",
+        "Announced partnership with 3 major hospital systems",
+        "Actively expanding enterprise hospital sales team"
+      ],
+      "techStack": [
+        "Epic Systems",
+        "Salesforce Health Cloud",
+        "HubSpot",
+        "Twilio"
+      ],
+      "painPoints": [
+        "Hospital systems have long 9-12 month sales cycles with multiple gatekeepers",
+        "Reaching Chief Medical Officers & Hospital CFOs requires highly credible, multi-touch phone and email outreach",
+        "Need high compliance (HIPAA / TCPA) across all communication channels"
+      ],
+      "valueProp": "OmniReach provides fully compliant, HIPAA-ready AI outreach with verified voice screening and executive meeting scheduling.",
+      "icebreaker": "Huge congratulations on the MedBill acquisition and now scaling FinPulse with Bessemer—your healthcare advocacy is truly inspirational!"
+    },
+    "channels": {
+      "email": {
+        "status": "sent",
+        "subject": "Quick question regarding FinPulse Health's outbound pipeline",
+        "body": "Hi Elena,\n\nSaw that FinPulse Health is closed $12m series a led by bessemer venture partners—congrats on the momentum!\n\nReaching out because revenue leaders at high-growth companies often tell us that hospital systems have long 9-12 month sales cycles with multiple gatekeepers. Reps spend up to 70% of their day digging for contacts and manual dialling instead of speaking with live buyers.\n\nWe built OmniReach AI to omnireach ai is an autonomous outbound sales platform that unifies ai client discovery, hyper-personalized email sequencing, linkedin social touches, and conversational voice calls via aircall to book 3.4x more qualified meetings with zero manual prospecting grind.—allowing revenue teams to decouple quota from headcount.\n\nTeams scaling in HealthTech / FinTech SaaS typically see a 3.4x bump in qualified meetings within their first 3 weeks.\n\nOpen to checking out a quick 5-minute interactive walkthrough this Thursday at 2 PM?\n\nBest regards,\nAlex Morgan\nHead of AI Automation | OmniReach AI\n+1 (800) 555-0199",
+        "sentAt": "10/29/2026, 1:52:31 PM",
+        "opens": 5,
+        "clicks": 2
+      },
+      "linkedin": {
+        "status": "messaged",
+        "connectionNote": "Hi Elena, huge fan of what you're building at FinPulse post-MedBill AI. Would be an honor to connect!",
+        "inMailText": "Elena, loved your thoughts on the Future of HealthTech podcast. Sent an email your way with data on reducing healthcare enterprise sales cycles. Would love to connect here as well!",
+        "socialActions": [
+          {
+            "action": "Endorsed for Healthcare Technology",
+            "timestamp": "2026-10-26 12:10"
+          }
+        ]
+      },
+      "call": {
+        "status": "completed",
+        "callScript": "Hi Elena, this is Alex from OmniReach. Calling regarding our email exchange about accelerating hospital CFO pipeline for FinPulse. Did I catch you while you have a moment?",
+        "objectionPlan": {
+          "busy": "I appreciate your busy schedule Elena. How about Thursday at 11 AM EST?",
+          "compliance": "We are fully SOC2 Type II, TCPA, and HIPAA compliant with encrypted call transcripts and strict zero-retention voice modes."
+        },
+        "transcript": [
+          {
+            "speaker": "AI SDR",
+            "text": "Hi Elena, Alex from OmniReach AI following up on your email reply regarding hospital CFO pipeline automation.",
+            "timestamp": "10:02 AM"
+          },
+          {
+            "speaker": "Lead",
+            "text": "Hi Alex, yes! Your email caught my eye. We are scaling our sales team but hospital gatekeepers are brutal. How does your voice calling handle gatekeepers?",
+            "timestamp": "10:02 AM"
+          },
+          {
+            "speaker": "AI SDR",
+            "text": "Our AI Voice agent identifies gatekeepers in real-time, references recent hospital press releases, and requests specific executive department extensions with natural human cadences. It gets through 3x more often than manual dialers.",
+            "timestamp": "10:03 AM"
+          },
+          {
+            "speaker": "Lead",
+            "text": "That's exactly what we need. Let's get a demo on the calendar for this Friday.",
+            "timestamp": "10:03 AM"
+          },
+          {
+            "speaker": "AI SDR",
+            "text": "Fantastic Elena! I've booked Friday, Oct 31st at 11:00 AM EST and dispatched the Google Meet invite to elena@finpulsehealth.com.",
+            "timestamp": "10:04 AM"
+          }
+        ],
+        "callDuration": "3m 42s",
+        "sentiment": "High Interest",
+        "meetingBooked": true,
+        "meetingTime": "2026-10-31 11:00 AM EST",
+        "notes": "Aircall call connected via 27x Speed-to-Lead trigger."
+      }
+    },
+    "timeline": [
+      {
+        "id": "t-1793464215047",
+        "type": "call",
+        "title": "27x Copilot: Approved & Dispatched CALL",
+        "description": "Dispatched to Elena Rostova (FinPulse Health) following manual review. Confidence: 98%.",
+        "timestamp": "10/31/2026, 10:00:15 PM"
+      },
+      {
+        "id": "t-1793262151234",
+        "type": "email",
+        "title": "AI Personalized Cold Email Sent",
+        "description": "Dispatched \"Quick question regarding FinPulse Health's outbound pipeline\" to elena@finpulsehealth.com. Deliverability Grade A+.",
+        "timestamp": "10/29/2026, 1:52:31 PM"
+      },
+      {
+        "id": "t-4",
+        "type": "email",
+        "title": "Email Replied: 'Let's chat'",
+        "description": "Elena replied: 'Intrigued by how you handle hospital gatekeepers. Can we talk this week?'",
+        "timestamp": "2026-10-26 15:20"
+      },
+      {
+        "id": "t-5",
+        "type": "call",
+        "title": "AI Voice Call Completed - Meeting Booked",
+        "description": "AI SDR successfully conducted qualifying call and booked Google Meet for Oct 31, 11:00 AM EST.",
+        "timestamp": "2026-10-28 10:04"
+      }
+    ]
+  },
+  {
+    "id": "lead-04",
+    "name": "David Sterling",
+    "title": "Head of Global Procurement & Sales Ops",
+    "company": "TitanLogix Freight",
+    "website": "https://titanlogixfreight.com",
+    "industry": "Supply Chain & Logistics",
+    "location": "Chicago, IL",
+    "companySize": "300-600 employees",
+    "annualRevenue": "$75M ARR",
+    "email": "d.sterling@titanlogixfreight.com",
+    "phone": "+1 (312) 880-4920",
+    "linkedin": "linkedin.com/in/davidsterling-logistics",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    "status": "Outreach Active",
+    "fitScore": 82,
+    "intentScore": 78,
+    "dealValue": 52000,
+    "research": {
+      "executiveBio": "20 years in 3PL and freight logistics optimization. Manages enterprise carrier relationships and procurement technology stack across North America.",
+      "companySummary": "TitanLogix provides multimodal freight brokerage, real-time tracking, and automated carrier matching.",
+      "recentTriggers": [
+        "Expanding dedicated fleet operations in Midwest corridor",
+        "Modernizing legacy dispatch and CRM software systems",
+        "High churn in junior phone sales reps dialling carriers manually"
+      ],
+      "techStack": [
+        "McLeod Software",
+        "Salesforce",
+        "RingCentral",
+        "PowerBI"
+      ],
+      "painPoints": [
+        "Carriers and freight brokers spend 5+ hours daily cold dialling shipper leads",
+        "Rep burnout and turnover is exceeding 45% annually",
+        "Need automated outbound calling that sounds natural and logs directly to CRM"
+      ],
+      "valueProp": "Replace repetitive cold calling with AI conversational voice agents that pre-screen freight leads and transfer live warm shippers to senior brokers.",
+      "icebreaker": "Noticed TitanLogix recently crossed 500,000 loads tracked this year—huge milestone for the Midwest fleet!"
+    },
+    "channels": {
+      "email": {
+        "status": "sent",
+        "subject": "Automating shipper prospecting for TitanLogix fleet",
+        "body": "Hi David,\n\nCongrats on crossing 500k loads tracked this year!\n\nReaching out because freight brokerages often tell us their reps burn out spending 5 hours dialling shippers who never pick up.\n\nWe built an autonomous AI calling & email pipeline that handles the heavy lifting—researching high-volume shippers, initiating contact, and handing off warm conversations directly to your brokers.\n\nOpen to checking out a quick audio demo this week?\n\nBest,\nAlex",
+        "sentAt": "11/2/2026, 6:00:31 PM",
+        "opens": 0,
+        "clicks": 0
+      },
+      "linkedin": {
+        "status": "pending",
+        "connectionNote": "Hi David, saw TitanLogix's recent fleet expansion milestone. Would love to connect and share how logistics leaders are deploying AI voice outreach to protect broker margins.",
+        "inMailText": "David - quick question: are your brokers still manually cold dialling shippers? We've deployed autonomous voice SDRs for freight operators that 4x outbound booking volume.",
+        "socialActions": []
+      },
+      "call": {
+        "status": "pending",
+        "callScript": "Hi David, Alex from OmniReach. Calling because we work with freight leaders to eliminate manual broker cold calling using conversational voice bots. Do you have 30 seconds to hear how it works?",
+        "objectionPlan": {
+          "busy": "Totally get it David, freight never stops. What's the best email for a 1-minute audio sample?",
+          "rep_burnout": "Exactly why we built this—it takes the brutal cold dialling off your reps' plates so they only negotiate with warm shippers."
+        },
+        "transcript": [],
+        "callDuration": "0s",
+        "sentiment": "Neutral",
+        "meetingBooked": false,
+        "meetingTime": null
+      }
+    },
+    "timeline": [
+      {
+        "id": "t-1793622631010",
+        "type": "research",
+        "title": "Autonomous SDR Agent Swarm Executed",
+        "description": "AI Swarm executed 5-step autonomous cycle: Research -> Strategic Channel Selection -> Copywriting -> Omnichannel Dispatch.",
+        "timestamp": "11/2/2026, 6:00:31 PM"
+      },
+      {
+        "id": "t-6",
+        "type": "research",
+        "title": "Prospect Identified via ICP Scanner",
+        "description": "Match found based on Logistics industry, 300+ employees, and freight expansion signals.",
+        "timestamp": "2026-10-28 08:45"
+      }
+    ]
+  }
+]

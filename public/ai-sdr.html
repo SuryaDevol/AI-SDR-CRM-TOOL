@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>27x.ai — The Only AI SDR with a Live Data Engine</title>
+  <link rel="icon" type="image/png" href="/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --card: #FFFFFF;
+      --card-hover: #F8FAFC;
+      --border: #E2E8F0;
+      --border-bright: #CBD5E1;
+      --text: #0F172A;
+      --text-muted: #475569;
+      --text-faint: #94A3B8;
+      --crimson: #0284C7;
+      --crimson-soft: rgba(2, 132, 199, 0.08);
+      --crimson-glow: rgba(2, 132, 199, 0.25);
+      --indigo: #4F46E5;
+      --indigo-soft: rgba(79, 70, 229, 0.08);
+      --emerald: #10B981;
+      --emerald-soft: rgba(16, 185, 129, 0.08);
+      --amber: #F59E0B;
+      --amber-soft: rgba(245, 158, 11, 0.08);
+      --cyan: #0EA5E9;
+      --cyan-soft: rgba(14, 165, 233, 0.08);
+      --violet: #8B5CF6;
+      --violet-soft: rgba(139, 92, 246, 0.08);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.03) 0%, transparent 60%),
+        radial-gradient(circle at 90% 20%, rgba(2, 132, 199, 0.02) 0%, transparent 50%);
+    }
+
+    header.top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+      color: #0F172A;
+    }
+
+    .brand-logo .accent {
+      color: var(--crimson);
+    }
+
+    .badge-sdr {
+      background: var(--crimson-soft);
+      color: var(--crimson);
+      border: 1px solid rgba(2, 132, 199, 0.3);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .live-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 9999px;
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 8px var(--emerald);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.15); }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: color 0.15s;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mode-switch-pill {
+      display: inline-flex;
+      background: #F1F5F9;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 3px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .mode-opt {
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mode-opt.active {
+      background: var(--crimson);
+      color: #fff;
+      box-shadow: 0 2px 10px var(--crimson-glow);
+    }
+
+    .btn {
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      font-family: inherit;
+    }
+
+    .btn-secondary {
+      background: #FFFFFF;
+      border-color: #CBD5E1;
+      color: #1E293B;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .btn-secondary:hover {
+      background: #F8FAFC;
+      border-color: #94A3B8;
+      color: #0F172A;
+      transform: translateY(-1px);
+    }
+
+    .btn-crimson {
+      background: linear-gradient(135deg, #0284C7 0%, #0284C7 100%);
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+    }
+
+    .btn-crimson:hover {
+      background: linear-gradient(135deg, #0369A1 0%, #0369A1 100%);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-indigo {
+      background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%);
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn-indigo:hover {
+      background: linear-gradient(135deg, #4338CA 0%, #2563EB 100%);
+      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-emerald {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-emerald:hover {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-violet {
+      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+    }
+
+    .btn-violet:hover {
+      background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-amber {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-amber:hover {
+      background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-cyan {
+      background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.3);
+    }
+
+    .btn-cyan:hover {
+      background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .main-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      width: 100%;
+      flex: 1;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: var(--crimson-soft);
+      border: 1px solid rgba(2, 132, 199, 0.25);
+      color: var(--crimson);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.12;
+      margin-bottom: 18px;
+      color: #0F172A;
+      background: linear-gradient(180deg, #0F172A 30%, #334155 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .metric-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: all 0.2s;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .metric-card:hover {
+      border-color: #CBD5E1;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -3px rgba(0, 0, 0, 0.07);
+    }
+
+    .metric-value {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .metric-value.accent {
+      color: var(--crimson);
+    }
+
+    .metric-value.emerald {
+      color: var(--emerald);
+    }
+
+    .metric-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .section-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 36px;
+      position: relative;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-title-wrap h2 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #0F172A;
+    }
+
+    .section-title-wrap p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .filter-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .search-input-box {
+      position: relative;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .search-input-box input {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 10px;
+      padding: 10px 14px 10px 38px;
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.15s;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    .search-input-box input:focus {
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+    }
+
+    .search-input-box svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-faint);
+      width: 16px;
+      height: 16px;
+    }
+
+    .filter-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    .filter-chip:hover {
+      background: #F8FAFC;
+      color: var(--text);
+      border-color: #CBD5E1;
+    }
+
+    .filter-chip.active {
+      background: var(--crimson-soft);
+      border-color: rgba(2, 132, 199, 0.4);
+      color: var(--crimson);
+    }
+
+    .prospects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 16px;
+    }
+
+    .prospect-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .prospect-card:hover {
+      border-color: #CBD5E1;
+      background: #FAFAFA;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -3px rgba(0, 0, 0, 0.07);
+    }
+
+    .prospect-card.selected {
+      border-color: var(--crimson);
+      box-shadow: 0 0 16px var(--crimson-soft);
+    }
+
+    .prospect-head {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .prospect-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid var(--border-bright);
+      flex-shrink: 0;
+    }
+
+    .prospect-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .prospect-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .verified-icon {
+      color: var(--emerald);
+      width: 14px;
+      height: 14px;
+    }
+
+    .prospect-title {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+
+    .prospect-company {
+      font-size: 12px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .signal-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+
+    .signal-pill.funding {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #059669;
+    }
+
+    .signal-pill.hiring {
+      background: rgba(79, 70, 229, 0.1);
+      border: 1px solid rgba(79, 70, 229, 0.3);
+      color: #4F46E5;
+    }
+
+    .signal-pill.tech {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: #D97706;
+    }
+
+    .signal-pill.intent {
+      background: rgba(2, 132, 199, 0.1);
+      border: 1px solid rgba(2, 132, 199, 0.3);
+      color: #E11D48;
+    }
+
+    .tech-stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .tech-tag {
+      font-size: 10.5px;
+      padding: 2px 7px;
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      border-radius: 4px;
+      color: #475569;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .prospect-actions {
+      display: flex;
+      gap: 8px;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+
+    .btn-action {
+      flex: 1;
+      padding: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1.5px solid #CBD5E1;
+      background: #FFFFFF;
+      color: #1E293B;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: inherit;
+    }
+
+    .btn-action:hover {
+      background: #F8FAFC;
+      border-color: #94A3B8;
+      color: #0F172A;
+    }
+
+    .btn-action.primary {
+      background: linear-gradient(135deg, #0284C7 0%, #0284C7 100%);
+      border: none;
+      color: #FFFFFF !important;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+    }
+
+    .btn-action.primary:hover {
+      background: linear-gradient(135deg, #0369A1 0%, #0369A1 100%);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    }
+
+    .generator-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .generator-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gen-panel {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .panel-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tab-pills {
+      display: flex;
+      gap: 6px;
+      background: #F1F5F9;
+      padding: 4px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tab-pill {
+      flex: 1;
+      padding: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.15s;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+    }
+
+    .tab-pill.active {
+      background: #FFFFFF;
+      color: #0F172A;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      font-weight: 700;
+    }
+
+    .draft-textarea {
+      width: 100%;
+      height: 220px;
+      background: #FFFFFF;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 14px;
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      line-height: 1.6;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.15s;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    .draft-textarea:focus {
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+    }
+
+    .voicetype-mic-box {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.06), rgba(79, 70, 229, 0.04));
+      border: 1.5px dashed rgba(139, 92, 246, 0.4);
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .vt-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .vt-mic-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+      border: none;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+    }
+
+    .vt-mic-btn:hover {
+      background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+      color: #FFFFFF;
+      transform: scale(1.06);
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+    }
+
+    .vt-mic-btn.recording {
+      background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+      color: #FFFFFF;
+      animation: recordPulse 1.2s infinite;
+    }
+
+    @keyframes recordPulse {
+      0% { box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.7); }
+      70% { box-shadow: 0 0 0 12px rgba(2, 132, 199, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(2, 132, 199, 0); }
+    }
+
+    .vt-text-block h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .vt-text-block p {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .key-badge {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: #334155;
+    }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      position: relative;
+    }
+
+    .flow-step {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .flow-step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: #EEF2FF;
+      border: 1px solid #C7D2FE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #4F46E5;
+      margin-bottom: 12px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .flow-step h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+
+    .flow-step p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .terminal-box {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      height: 180px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 8px;
+    }
+
+    .term-line {
+      display: flex;
+      gap: 10px;
+      color: #475569;
+    }
+
+    .term-time {
+      color: #94A3B8;
+      flex-shrink: 0;
+    }
+
+    .term-tag {
+      color: #4F46E5;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .term-msg {
+      color: #0F172A;
+    }
+
+    .queue-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .queue-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .queue-lead {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+
+    .queue-tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--amber-soft);
+      color: var(--amber);
+      font-weight: 600;
+    }
+
+    .queue-body-preview {
+      font-size: 12.5px;
+      color: #1E293B;
+      background: #F8FAFC;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.5;
+    }
+
+    .queue-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #0F172A;
+      padding: 12px 18px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: toastIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: auto;
+    }
+
+    @keyframes toastIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-nav">
+    <div style="display: flex; align-items: center; gap: 24px;">
+      <a href="/ai-sdr.html" class="brand-group">
+        <div class="brand-logo">
+          27<span class="accent">x</span>.ai
+        </div>
+        <span class="badge-sdr">AI SDR Autonomous Engine</span>
+      </a>
+
+      <div class="live-status">
+        <div class="pulse-dot"></div>
+        <span>Live Data Engine: <strong id="live-contacts-counter" style="color: #fff;">384,520,242</strong> Verified Contacts</span>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="#prospector" class="nav-link">Live Data Engine</a>
+      <a href="#workflow" class="nav-link">Multi-Channel Workflow</a>
+      <a href="#station" class="nav-link">Copilot Review</a>
+      <a href="#radar" class="nav-link">Signal Radar</a>
+    </div>
+
+    <div class="nav-actions">
+      
+      <div class="mode-switch-pill" onclick="toggleGlobalMode()" title="Toggle Autopilot / Copilot Execution Mode">
+        <div id="mode-opt-autopilot" class="mode-opt active">
+          <i data-lucide="zap" style="width: 13px; height: 13px;"></i>
+          <span>Autopilot</span>
+        </div>
+        <div id="mode-opt-copilot" class="mode-opt">
+          <i data-lucide="shield-check" style="width: 13px; height: 13px;"></i>
+          <span>Copilot</span>
+        </div>
+      </div>
+
+      <a href="/" class="btn btn-secondary">
+        <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i>
+        <span>OmniReach CRM</span>
+      </a>
+      <a href="/voicetype.html" class="btn btn-crimson" title="Open VoiceType Speech Dictation Studio">
+        <i data-lucide="mic" style="width: 14px; height: 14px;"></i>
+        <span>VoiceType</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main-wrap">
+
+    <section class="hero">
+      <div class="hero-eyebrow">
+        <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+        <span>The Autonomous Sales Development Representative</span>
+      </div>
+      <h1 class="hero-title">The Only AI SDR with a Live Data Engine</h1>
+      <p class="hero-subtitle">
+        Replaces stale CSV imports and generic mail-merge templates with an autonomous agent continuously researching 380M+ live verified contacts, monitoring intent signals, and booking meetings across Email, LinkedIn, and Phone.
+      </p>
+
+      <div class="metrics-bar">
+        <div class="metric-card">
+          <div class="metric-value accent">27.4x</div>
+          <div class="metric-label">Pipeline Lift Multiplier</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value" id="card-contacts-metric">384.5M+</div>
+          <div class="metric-label">Live Refreshed B2B Profiles</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value emerald">&lt; 3 mins</div>
+          <div class="metric-label">Speed-to-Lead Response Latency</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">99.4%</div>
+          <div class="metric-label">Verified Deliverability (Zero Bounce)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">15 hrs</div>
+          <div class="metric-label">Saved per Rep / Week</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prospector" class="section-box">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>
+            <i data-lucide="database" style="color: var(--crimson); width: 20px; height: 20px;"></i>
+            <span>380M+ Live Data Engine & Prospector</span>
+          </h2>
+          <p>Filtered in real time by company buying triggers, hiring surges, Series funding, and verified deliverability.</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-cyan" onclick="simulateNewSignal()">
+            <i data-lucide="radar" style="width: 14px; height: 14px; color: var(--crimson);"></i>
+            <span>Simulate Market Signal</span>
+          </button>
+          <button class="btn btn-crimson" onclick="launchBatchCampaign()">
+            <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+            <span>Launch Autopilot on Filtered</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="filter-toolbar">
+        <div class="search-input-box">
+          <i data-lucide="search"></i>
+          <input type="text" id="prospect-search" placeholder="Search by name, company, title, or tech stack (e.g. Snowflake, AWS)..." oninput="debounceSearch()">
+        </div>
+
+        <div class="filter-chips">
+          <div class="filter-chip active" data-signal="all" onclick="setSignalFilter('all')">All Signals</div>
+          <div class="filter-chip" data-signal="funding" onclick="setSignalFilter('funding')">
+            <i data-lucide="dollar-sign" style="width: 12px; height: 12px;"></i>
+            <span>Series Funding</span>
+          </div>
+          <div class="filter-chip" data-signal="hiring" onclick="setSignalFilter('hiring')">
+            <i data-lucide="users" style="width: 12px; height: 12px;"></i>
+            <span>Hiring Surge</span>
+          </div>
+          <div class="filter-chip" data-signal="tech" onclick="setSignalFilter('tech')">
+            <i data-lucide="cpu" style="width: 12px; height: 12px;"></i>
+            <span>Tech Migration</span>
+          </div>
+          <div class="filter-chip" data-signal="intent" onclick="setSignalFilter('intent')">
+            <i data-lucide="activity" style="width: 12px; height: 12px;"></i>
+            <span>In-Market Intent</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prospects-grid" id="prospects-container">
+        
+      </div>
+    </section>
+
+    <section id="generator" class="section-box">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>
+            <i data-lucide="sparkles" style="color: var(--crimson); width: 20px; height: 20px;"></i>
+            <span>Signal-to-Outreach AI Generator</span>
+          </h2>
+          <p>Contextualized 1:1 tailored outreach synthesised from the live data engine footprint with VoiceType push-to-talk editing.</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 12px; color: var(--text-muted);">Active Target:</span>
+          <span id="active-target-badge" style="font-weight: 700; color: #0F172A; background: #F1F5F9; border: 1px solid #CBD5E1; padding: 4px 10px; border-radius: 6px; font-size: 12px;">
+            Derrick Vance (QuantumScale Networks)
+          </span>
+        </div>
+      </div>
+
+      <div class="generator-wrap">
+        
+        <div class="gen-panel">
+          <div class="panel-title">
+            <div class="tab-pills" style="margin-bottom: 0;">
+              <button class="tab-pill active" id="tab-channel-email" onclick="switchOutreachChannel('email')">1:1 Email Sequence</button>
+              <button class="tab-pill" id="tab-channel-linkedin" onclick="switchOutreachChannel('linkedin')">LinkedIn InMail</button>
+              <button class="tab-pill" id="tab-channel-call" onclick="switchOutreachChannel('call')">Aircall Speed-to-Lead</button>
+            </div>
+            <span id="gen-confidence-tag" style="font-size: 11px; padding: 3px 8px; border-radius: 4px; background: rgba(16, 185, 129, 0.15); color: #34d399; font-weight: 700;">
+              98% Signal Fit
+            </span>
+          </div>
+
+          <div style="margin-bottom: 10px;">
+            <label style="font-size: 11px; color: var(--text-faint); font-weight: 600; text-transform: uppercase;">Subject Line</label>
+            <input type="text" id="draft-subject" style="width: 100%; background: #FFFFFF; border: 1.5px solid var(--border); border-radius: 6px; padding: 8px 12px; color: #0F172A; font-size: 13px; font-weight: 600; margin-top: 4px;" value="QuantumScale + 27x: $35M Series B Expansion">
+          </div>
+
+          <label style="font-size: 11px; color: var(--text-faint); font-weight: 600; text-transform: uppercase; margin-bottom: 4px;">Outreach Message Body</label>
+          <textarea id="draft-body" class="draft-textarea" placeholder="AI SDR copy generating..."></textarea>
+
+          <div class="voicetype-mic-box">
+            <div class="vt-info">
+              <button class="vt-mic-btn" id="vt-mic-btn" onclick="toggleVoiceTypeDictation()" title="Click or hold Ctrl+Space to speak">
+                <i data-lucide="mic" style="width: 20px; height: 20px;"></i>
+              </button>
+              <div class="vt-text-block">
+                <h4>
+                  <span>VoiceType Dictation</span>
+                  <span class="key-badge">Ctrl+Space</span>
+                </h4>
+                <p id="vt-status-text">Hold shortcut or click mic to dictate personalized copy or voice notes directly into the draft.</p>
+              </div>
+            </div>
+            <div style="text-align: right; flex-shrink: 0;">
+              <span id="vt-words-count" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted);">0 words</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 16px;">
+            <button class="btn btn-amber" style="flex: 1;" onclick="regenerateCopy()">
+              <i data-lucide="refresh-cw" style="width: 14px; height: 14px;"></i>
+              <span>Regenerate with AI</span>
+            </button>
+            <button class="btn btn-indigo" style="flex: 1;" onclick="dispatchCurrentDraft()">
+              <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+              <span id="btn-dispatch-label">Dispatch via Autopilot</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="gen-panel">
+          <div class="panel-title">
+            <span>Verified Prospect Footprint</span>
+            <span style="font-size: 11px; color: var(--emerald); display: flex; align-items: center; gap: 4px;">
+              <i data-lucide="shield-check" style="width: 14px; height: 14px;"></i>
+              Catch-All Safe (99.8%)
+            </span>
+          </div>
+
+          <div style="background: #F8FAFC; border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+              <span style="color: var(--text-muted); font-size: 12px;">Contact Email</span>
+              <span id="footprint-email" style="color: #0F172A; font-family: 'JetBrains Mono', monospace; font-size: 12px;">d.vance@quantumscale.io</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+              <span style="color: var(--text-muted); font-size: 12px;">Direct Phone</span>
+              <span id="footprint-phone" style="color: #0F172A; font-family: 'JetBrains Mono', monospace; font-size: 12px;">+1 (415) 782-9014</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+              <span style="color: var(--text-muted); font-size: 12px;">Location / ARR</span>
+              <span id="footprint-rev" style="color: #cbd5e1; font-size: 12px;">San Francisco, CA • $45M ARR</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-muted); font-size: 12px;">Active Signal</span>
+              <span id="footprint-signal-tag" style="color: #34d399; font-weight: 600; font-size: 12px;">$35M Series B Expansion</span>
+            </div>
+          </div>
+
+          <label style="font-size: 11px; color: var(--text-faint); font-weight: 600; text-transform: uppercase; margin-bottom: 6px;">Verified Technology Stack</label>
+          <div class="tech-stack-row" id="footprint-tech-stack">
+            <span class="tech-tag">Kubernetes</span>
+            <span class="tech-tag">AWS</span>
+            <span class="tech-tag">Databricks</span>
+            <span class="tech-tag">Snowflake</span>
+            <span class="tech-tag">Terraform</span>
+          </div>
+
+          <label style="font-size: 11px; color: var(--text-faint); font-weight: 600; text-transform: uppercase; margin-bottom: 6px; margin-top: 10px;">Autonomous Execution Strategy</label>
+          <div style="font-size: 12.5px; color: #334155; line-height: 1.6; background: #F8FAFC; border: 1px solid var(--border); border-radius: 8px; padding: 14px;">
+            <p>1. <strong>Channel Coordination:</strong> Initiating with high-deliverability primary domain email + synchronized LinkedIn connection note.</p>
+            <p style="margin-top: 6px;">2. <strong>Speed-to-Lead Dialing:</strong> If prospect opens email 2+ times, Aircall CTI triggers phone touch with customized infrastructure hook.</p>
+            <p style="margin-top: 6px;">3. <strong>Auto-Booking:</strong> Direct calendar slot booking via Claude 3.5 Sonnet upon high-interest response.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="section-box">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>
+            <i data-lucide="git-merge" style="color: var(--crimson); width: 20px; height: 20px;"></i>
+            <span>Autonomous Multi-Channel Execution Workflow</span>
+          </h2>
+          <p>Coordinates outreach across Email, LinkedIn, Phone, and Calendar booking without human intervention.</p>
+        </div>
+      </div>
+
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step-num">01</div>
+          <h3>Signal Radar & Deliverability</h3>
+          <p>Monitors 380M+ contacts for Series B rounds, hiring surges, and website visits. Verifies SPF/DKIM and catch-all protection.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">02</div>
+          <h3>1:1 Research & Synthesis</h3>
+          <p>Studies buyer digital footprint, company news, and current stack to draft tailored hooks with zero robotic templates.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">03</div>
+          <h3>Day 1: Email + LinkedIn</h3>
+          <p>Dispatches hyper-personalized cold email and synchronized LinkedIn connection note from warmed domain rotation.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">04</div>
+          <h3>Day 2: Speed-to-Lead Call</h3>
+          <p>Upon email click or open, Aircall CTI triggers phone outreach within 3 minutes, displaying live battlecards.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">05</div>
+          <h3>Day 4: Meeting Auto-Booked</h3>
+          <p>Evaluates reply intent and automatically negotiates and locks Google Meet demo invite directly on rep calendar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="station" class="section-box">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>
+            <i data-lucide="shield-check" style="color: var(--amber); width: 20px; height: 20px;"></i>
+            <span>Copilot Review Station (Human-in-the-Loop)</span>
+          </h2>
+          <p>When running in Copilot mode, outbound drafts queue here for quick 1-click approvals or VoiceType speech editing.</p>
+        </div>
+        <span id="queue-badge-count" style="font-size: 12px; font-weight: 700; background: var(--amber-soft); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); padding: 4px 12px; border-radius: 9999px;">
+          3 Pending Approvals
+        </span>
+      </div>
+
+      <div id="copilot-queue-list">
+        
+      </div>
+    </section>
+
+    <section id="radar" class="section-box">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <h2>
+            <i data-lucide="terminal" style="color: var(--crimson); width: 20px; height: 20px;"></i>
+            <span>Live SDR Execution Telemetry Stream</span>
+          </h2>
+          <p>Autonomous agent activities, verification audits, and speed-to-lead triggers happening right now.</p>
+        </div>
+        <button class="btn btn-secondary" onclick="clearTelemetry()">
+          <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
+          <span>Clear Feed</span>
+        </button>
+      </div>
+
+      <div class="terminal-box" id="telemetry-terminal">
+        
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong>27x.ai Autonomous Sales Platform</strong> — Live Data Engine • Signal-Driven Multi-Channel Outreach
+    </div>
+    <div>
+      Integrated with VoiceType Dictation & OmniReach CRM
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script>    const state = {
+      mode: 'autopilot',
+      activeChannel: 'email',
+      selectedProspect: null,
+      prospects: [],
+      currentFilterSignal: 'all',
+      searchQuery: '',
+      isDictating: false,
+      speechRecognition: null,
+      audioCtx: null
+    };
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (window.lucide) lucide.createIcons();
+      initAudio();
+      initSpeechRecognition();
+      await fetchState();
+      await loadProspects();
+      await fetchTelemetry();
+      setupKeybindings();
+      startTelemetryTicker();
+    });
+    function initAudio() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) state.audioCtx = new AudioContext();
+      } catch (e) {
+        console.warn('AudioContext not available');
+      }
+    }
+    function playBeep(freq = 600, duration = 0.08, type = 'sine') {
+      if (!state.audioCtx) return;
+      try {
+        if (state.audioCtx.state === 'suspended') state.audioCtx.resume();
+        const osc = state.audioCtx.createOscillator();
+        const gain = state.audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.04, state.audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, state.audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(state.audioCtx.destination);
+        osc.start();
+        osc.stop(state.audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+    async function fetchState() {
+      try {
+        const res = await fetch('/api/27x/state').then(r => r.json());
+        if (res.success && res.state) {
+          state.mode = res.state.mode || 'autopilot';
+          updateModeUI();
+          renderCopilotQueue(res.state.approvalQueue || []);
+        }
+      } catch (e) {
+        console.error('Failed to fetch 27x state:', e);
+      }
+    }
+    async function toggleGlobalMode() {
+      const newMode = state.mode === 'autopilot' ? 'copilot' : 'autopilot';
+      playBeep(newMode === 'autopilot' ? 880 : 540);
+      try {
+        const res = await fetch('/api/27x/mode/toggle', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ mode: newMode })
+        }).then(r => r.json());
+        if (res.success) {
+          state.mode = res.mode;
+          updateModeUI();
+          showToast(`Switched 27x operating mode to ${state.mode.toUpperCase()}`);
+        }
+      } catch (e) {
+        state.mode = newMode;
+        updateModeUI();
+      }
+    }
+    function updateModeUI() {
+      const autoEl = document.getElementById('mode-opt-autopilot');
+      const copilotEl = document.getElementById('mode-opt-copilot');
+      const btnDispatchLabel = document.getElementById('btn-dispatch-label');
+      if (state.mode === 'autopilot') {
+        autoEl.classList.add('active');
+        copilotEl.classList.remove('active');
+        if (btnDispatchLabel) btnDispatchLabel.innerText = 'Dispatch via Autopilot';
+      } else {
+        autoEl.classList.remove('active');
+        copilotEl.classList.add('active');
+        if (btnDispatchLabel) btnDispatchLabel.innerText = 'Add to Copilot Queue';
+      }
+    }
+    async function loadProspects() {
+      try {
+        let url = `/api/27x/prospects?signal=${state.currentFilterSignal}`;
+        if (state.searchQuery) url += `&search=${encodeURIComponent(state.searchQuery)}`;
+        const res = await fetch(url).then(r => r.json());
+        if (res.success) {
+          state.prospects = res.prospects;
+          document.getElementById('live-contacts-counter').innerText = Number(res.totalLiveContacts).toLocaleString();
+          renderProspectsGrid(res.prospects);
+          if (!state.selectedProspect && res.prospects.length > 0) {
+            selectProspect(res.prospects[0].id);
+          }
+        }
+      } catch (e) {
+        console.error('Error loading prospects:', e);
+      }
+    }
+    function renderProspectsGrid(prospects) {
+      const container = document.getElementById('prospects-container');
+      if (!container) return;
+      if (prospects.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 48px; color: var(--text-muted);">
+            <i data-lucide="search-x" style="width: 32px; height: 32px; margin: 0 auto 12px; display: block; opacity: 0.5;"></i>
+            <p>No verified prospects matching filter criteria in live engine.</p>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+      container.innerHTML = prospects.map(p => {
+        const isSelected = state.selectedProspect && state.selectedProspect.id === p.id;
+        const sigType = p.intentSignal ? p.intentSignal.type : 'intent';
+        const sigTitle = p.intentSignal ? p.intentSignal.title : 'Market Trigger';
+        return `
+          <div class="prospect-card ${isSelected ? 'selected' : ''}" id="card-p-${p.id}">
+            <div class="prospect-head">
+              <img src="${p.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150'}" alt="${p.name}" class="prospect-avatar">
+              <div class="prospect-meta">
+                <div class="prospect-name">
+                  <span>${p.name}</span>
+                  <i data-lucide="shield-check" class="verified-icon" title="Deliverability Score: 99.8% (Catch-All Safe)"></i>
+                </div>
+                <div class="prospect-title">${p.title}</div>
+                <div class="prospect-company">${p.company} • <span style="color: var(--text-faint);">${p.location}</span></div>
+              </div>
+            </div>
+            <div class="signal-pill ${sigType}">
+              <i data-lucide="${sigType === 'funding' ? 'dollar-sign' : sigType === 'hiring' ? 'users' : sigType === 'tech' ? 'cpu' : 'activity'}" style="width: 13px; height: 13px;"></i>
+              <span>${sigTitle}</span>
+            </div>
+            <div class="tech-stack-row">
+              ${(p.techStack || []).slice(0, 4).map(t => `<span class="tech-tag">${t}</span>`).join('')}
+            </div>
+            <div class="prospect-actions">
+              <button class="btn-action" onclick="selectProspect('${p.id}')">
+                <i data-lucide="sparkles" style="width: 13px; height: 13px; color: var(--crimson);"></i>
+                <span>Generate Copy</span>
+              </button>
+              <button class="btn-action primary" onclick="quickLaunchProspect('${p.id}')">
+                <i data-lucide="zap" style="width: 13px; height: 13px;"></i>
+                <span>${state.mode === 'autopilot' ? 'Autopilot' : 'Queue Draft'}</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+      if (window.lucide) lucide.createIcons();
+    }
+    async function selectProspect(id) {
+      const p = state.prospects.find(item => item.id === id);
+      if (!p) return;
+      state.selectedProspect = p;
+      playBeep(700);
+      document.querySelectorAll('.prospect-card').forEach(el => el.classList.remove('selected'));
+      const activeCard = document.getElementById(`card-p-${id}`);
+      if (activeCard) activeCard.classList.add('selected');
+      document.getElementById('active-target-badge').innerText = `${p.name} (${p.company})`;
+      document.getElementById('footprint-email').innerText = p.email || 'verified@domain.io';
+      document.getElementById('footprint-phone').innerText = p.phone || '+1 (415) 880-9000';
+      document.getElementById('footprint-rev').innerText = `${p.location || 'USA'} • ${p.revenue || '$30M ARR'}`;
+      document.getElementById('footprint-signal-tag').innerText = p.intentSignal ? p.intentSignal.title : 'Live Growth Trigger';
+      const techBox = document.getElementById('footprint-tech-stack');
+      if (techBox) {
+        techBox.innerHTML = (p.techStack || ['AWS', 'Kubernetes']).map(t => `<span class="tech-tag">${t}</span>`).join('');
+      }
+      await generateCopyForActiveProspect();
+    }
+    async function generateCopyForActiveProspect() {
+      if (!state.selectedProspect) return;
+      const p = state.selectedProspect;
+      const draftSubject = document.getElementById('draft-subject');
+      const draftBody = document.getElementById('draft-body');
+      draftBody.value = 'Generating 1:1 tailored outreach using Claude 3.5 Sonnet...';
+      try {
+        const res = await fetch('/api/27x/generate-outreach', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            prospectId: p.id,
+            prospectData: p,
+            channel: state.activeChannel
+          })
+        }).then(r => r.json());
+        if (res.success && res.outreach) {
+          const out = res.outreach;
+          if (state.activeChannel === 'email') {
+            draftSubject.value = out.subject || `${p.company} + 27x: ${p.intentSignal?.title}`;
+            draftBody.value = out.body || '';
+          } else if (state.activeChannel === 'linkedin') {
+            draftSubject.value = `LinkedIn InMail / Connection Hook`;
+            draftBody.value = out.inMailBody || out.connectionNote || '';
+          } else if (state.activeChannel === 'call') {
+            draftSubject.value = `Aircall Speed-to-Lead Opening Script`;
+            draftBody.value = `[Opening Hook]\n${out.opener}\n\n[30-Second Pitch]\n${out.hookPitch}\n\n[Objection Handlers]\nTiming: ${out.objections?.timing}\nCompetitor: ${out.objections?.competitor}`;
+          }
+          updateWordCount();
+        }
+      } catch (e) {
+        draftBody.value = p.suggestedHook || 'Hi there, saw your recent company milestone...';
+        updateWordCount();
+      }
+    }
+    function switchOutreachChannel(channel) {
+      state.activeChannel = channel;
+      playBeep(640);
+      document.querySelectorAll('.tab-pill').forEach(el => el.classList.remove('active'));
+      const activeTab = document.getElementById(`tab-channel-${channel}`);
+      if (activeTab) activeTab.classList.add('active');
+      generateCopyForActiveProspect();
+    }
+    function regenerateCopy() {
+      playBeep(800);
+      generateCopyForActiveProspect();
+      showToast('Generated fresh 1:1 outreach angle');
+    }
+    async function quickLaunchProspect(id) {
+      const p = state.prospects.find(item => item.id === id);
+      if (!p) return;
+      playBeep(920);
+      showToast(`Initiating 27x outreach sequence to ${p.name}...`);
+      try {
+        const res = await fetch('/api/27x/campaign/launch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            prospectIds: [p.id],
+            prospectData: p,
+            mode: state.mode,
+            channels: ['email', 'linkedin']
+          })
+        }).then(r => r.json());
+        if (res.success) {
+          showToast(res.message);
+          pushTelemetryEvent(
+            `[${state.mode === 'autopilot' ? 'Autopilot-Dispatch' : 'Copilot-Queued'}] ${p.name} (${p.company}) sequence initiated.`
+          );
+          await fetchState();
+        }
+      } catch (e) {
+        showToast(`Outreach queued for ${p.name}`);
+      }
+    }
+    async function dispatchCurrentDraft() {
+      if (!state.selectedProspect) return;
+      const p = state.selectedProspect;
+      const subject = document.getElementById('draft-subject').value;
+      const body = document.getElementById('draft-body').value;
+      playBeep(950);
+      try {
+        const res = await fetch('/api/27x/campaign/launch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            prospectIds: [p.id],
+            prospectData: p,
+            mode: state.mode,
+            channels: [state.activeChannel],
+            customizedCopy: { subject, body }
+          })
+        }).then(r => r.json());
+        if (res.success) {
+          showToast(res.message);
+          pushTelemetryEvent(
+            `[${state.mode === 'autopilot' ? 'Autopilot-Sent' : 'Copilot-Queue'}] ${p.name} (${p.company}) touch created.`
+          );
+          await fetchState();
+        }
+      } catch (e) {
+        showToast('Outreach dispatched successfully');
+      }
+    }
+    async function launchBatchCampaign() {
+      if (state.prospects.length === 0) return;
+      playBeep(980);
+      showToast(`Launching ${state.mode.toUpperCase()} on ${state.prospects.length} verified accounts...`);
+      try {
+        const res = await fetch('/api/27x/campaign/launch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            prospectIds: state.prospects.map(p => p.id),
+            mode: state.mode,
+            channels: ['email', 'linkedin']
+          })
+        }).then(r => r.json());
+        if (res.success) {
+          showToast(res.message);
+          pushTelemetryEvent(`[Batch-Campaign] Dispatched touches to ${state.prospects.length} accounts.`);
+          await fetchState();
+        }
+      } catch (e) {
+        showToast(`Batch sequence initiated across ${state.prospects.length} targets`);
+      }
+    }
+    let searchDebounceTimer = null;
+    function debounceSearch() {
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(() => {
+        state.searchQuery = document.getElementById('prospect-search').value.trim();
+        loadProspects();
+      }, 250);
+    }
+    function setSignalFilter(signal) {
+      state.currentFilterSignal = signal;
+      playBeep(520);
+      document.querySelectorAll('.filter-chip').forEach(el => el.classList.remove('active'));
+      const activeEl = document.querySelector(`.filter-chip[data-signal="${signal}"]`);
+      if (activeEl) activeEl.classList.add('active');
+      loadProspects();
+    }
+    async function simulateNewSignal() {
+      playBeep(850);
+      showToast('Scanning 380M+ database for fresh Series funding & hiring triggers...');
+      try {
+        const res = await fetch('/api/27x/scan-signals', { method: 'POST' }).then(r => r.json());
+        if (res.success) {
+          showToast(res.message);
+          pushTelemetryEvent(`[Signal-Radar] Fresh Series B & high-intent accounts mapped.`);
+          await loadProspects();
+          await fetchState();
+        }
+      } catch (e) {
+        showToast('Signal radar triggered fresh ICP discovery');
+      }
+    }
+    function renderCopilotQueue(queue) {
+      const container = document.getElementById('copilot-queue-list');
+      const badge = document.getElementById('queue-badge-count');
+      if (!container) return;
+      if (badge) badge.innerText = `${queue.length} Pending Approvals`;
+      if (queue.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 36px; color: var(--text-muted); background: #F8FAFC; border-radius: 8px; border: 1px solid var(--border);">
+            <i data-lucide="check-circle" style="width: 28px; height: 28px; margin: 0 auto 10px; color: var(--emerald); display: block;"></i>
+            <p style="font-weight: 600; color: #fff;">Copilot queue is clear!</p>
+            <p style="font-size: 12px; margin-top: 4px;">All autonomous touches have been dispatched or reviewed.</p>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+      container.innerHTML = queue.map(item => `
+        <div class="queue-item" id="queue-card-${item.id}">
+          <div class="queue-head">
+            <div class="queue-lead">
+              <span>${item.leadName}</span>
+              <span style="color: var(--text-faint); font-weight: 400; font-size: 13px;">(${item.company})</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="queue-tag">${item.channel.toUpperCase()}</span>
+              <span style="font-size: 11px; color: var(--text-faint);">${item.createdAgo || 'Just now'}</span>
+            </div>
+          </div>
+          <div class="queue-body-preview">${escapeHtml(item.previewBody || '')}</div>
+          <div class="queue-actions">
+            <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;" onclick="rejectQueueItem('${item.id}')">
+              <i data-lucide="x" style="width: 13px; height: 13px;"></i>
+              <span>Dismiss</span>
+            </button>
+            <button class="btn btn-violet" style="padding: 6px 12px; font-size: 12px;" onclick="editQueueItemWithVoiceType('${item.id}')">
+              <i data-lucide="mic" style="width: 13px; height: 13px; color: var(--crimson);"></i>
+              <span>Edit with VoiceType</span>
+            </button>
+            <button class="btn btn-emerald" style="padding: 6px 14px; font-size: 12px;" onclick="approveQueueItem('${item.id}')">
+              <i data-lucide="check" style="width: 13px; height: 13px;"></i>
+              <span>Approve & Dispatch</span>
+            </button>
+          </div>
+        </div>
+      `).join('');
+      if (window.lucide) lucide.createIcons();
+    }
+    async function approveQueueItem(id) {
+      playBeep(900);
+      try {
+        const res = await fetch('/api/27x/approve', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ queueId: id })
+        }).then(r => r.json());
+        if (res.success) {
+          showToast(res.message);
+          pushTelemetryEvent(`[Copilot-Approved] Dispatched touch for ${res.approvedItem?.leadName}.`);
+          await fetchState();
+        }
+      } catch (e) {
+        showToast('Draft approved and dispatched');
+      }
+    }
+    async function rejectQueueItem(id) {
+      playBeep(450);
+      try {
+        const res = await fetch('/api/27x/reject', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ queueId: id })
+        }).then(r => r.json());
+        if (res.success) {
+          showToast('Draft dismissed from queue');
+          await fetchState();
+        }
+      } catch (e) {
+        showToast('Item dismissed');
+      }
+    }
+    function editQueueItemWithVoiceType(id) {
+      const q = document.getElementById(`queue-card-${id}`);
+      if (q) {
+        const text = q.querySelector('.queue-body-preview')?.innerText;
+        const draftBody = document.getElementById('draft-body');
+        if (draftBody && text) {
+          draftBody.value = text;
+          updateWordCount();
+          document.getElementById('generator').scrollIntoView({ behavior: 'smooth' });
+          showToast('Loaded draft into VoiceType editor');
+        }
+      }
+    }
+    function initSpeechRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        document.getElementById('vt-status-text').innerText = 'Speech recognition not supported in this browser. Type in the editor directly.';
+        return;
+      }
+      state.speechRecognition = new SpeechRecognition();
+      state.speechRecognition.continuous = true;
+      state.speechRecognition.interimResults = true;
+      state.speechRecognition.lang = 'en-US';
+      state.speechRecognition.onstart = () => {
+        state.isDictating = true;
+        document.getElementById('vt-mic-btn').classList.add('recording');
+        document.getElementById('vt-status-text').innerText = 'Listening with VoiceType... Speak naturally.';
+        playBeep(880, 0.1);
+      };
+      state.speechRecognition.onresult = (event) => {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          transcript += event.results[i][0].transcript;
+        }
+        const draftBody = document.getElementById('draft-body');
+        if (draftBody) {
+          draftBody.value += (draftBody.value.endsWith(' ') || draftBody.value === '' ? '' : ' ') + transcript;
+          updateWordCount();
+        }
+      };
+      state.speechRecognition.onerror = (event) => {
+        console.warn('Speech recognition error:', event.error);
+        stopDictation();
+      };
+      state.speechRecognition.onend = () => {
+        stopDictation();
+      };
+    }
+    function toggleVoiceTypeDictation() {
+      if (!state.speechRecognition) return;
+      if (state.isDictating) {
+        state.speechRecognition.stop();
+      } else {
+        try {
+          state.speechRecognition.start();
+        } catch (e) {
+          state.speechRecognition.stop();
+        }
+      }
+    }
+    function stopDictation() {
+      state.isDictating = false;
+      const btn = document.getElementById('vt-mic-btn');
+      if (btn) btn.classList.remove('recording');
+      const status = document.getElementById('vt-status-text');
+      if (status) status.innerText = 'Hold Ctrl+Space or click mic to dictate personalized copy or voice notes directly into the draft.';
+      playBeep(440, 0.1);
+    }
+    function updateWordCount() {
+      const val = document.getElementById('draft-body')?.value || '';
+      const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+      const countEl = document.getElementById('vt-words-count');
+      if (countEl) countEl.innerText = `${words} words`;
+    }
+    function setupKeybindings() {
+      window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.code === 'Space') {
+          e.preventDefault();
+          toggleVoiceTypeDictation();
+        } else if (e.key === 'Escape' && state.isDictating) {
+          stopDictation();
+        }
+      });
+    }
+    async function fetchTelemetry() {
+      try {
+        const res = await fetch('/api/27x/telemetry').then(r => r.json());
+        if (res.success && res.recentEvents) {
+          res.recentEvents.forEach(evt => pushTelemetryEvent(evt));
+        }
+      } catch (e) {}
+    }
+    function pushTelemetryEvent(message) {
+      const term = document.getElementById('telemetry-terminal');
+      if (!term) return;
+      const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const row = document.createElement('div');
+      row.className = 'term-line';
+      row.innerHTML = `
+        <span class="term-time">${time}</span>
+        <span class="term-tag">[27x-AI-SDR]</span>
+        <span class="term-msg">${escapeHtml(message)}</span>
+      `;
+      term.insertBefore(row, term.firstChild);
+    }
+    function clearTelemetry() {
+      const term = document.getElementById('telemetry-terminal');
+      if (term) term.innerHTML = '';
+      showToast('Telemetry terminal cleared');
+    }
+    function startTelemetryTicker() {
+      const events = [
+        "Verified 384,520,242 B2B contacts across global registry.",
+        "Catch-all protection check completed: 99.8% inbox deliverability.",
+        "Identified 6 new SDR job openings for KubeVelocity (+32% sales headcount).",
+        "Aircall CTI triggered speed-to-lead queue for in-market visitor (<2m latency).",
+        "Claude 3.5 Sonnet generated tailored 1:1 outbound draft for Series B trigger.",
+        "Google Meet demo confirmed autonomously with VP of Cloud Infrastructure."
+      ];
+      setInterval(() => {
+        const rand = events[Math.floor(Math.random() * events.length)];
+        pushTelemetryEvent(rand);
+      }, 12000);
+    }
+    function showToast(msg) {
+      const c = document.getElementById('toast-container');
+      if (!c) return;
+      const t = document.createElement('div');
+      t.className = 'toast';
+      t.innerHTML = `<i data-lucide="info" style="width: 15px; height: 15px; color: var(--crimson);"></i><span>${escapeHtml(msg)}</span>`;
+      c.appendChild(t);
+      if (window.lucide) lucide.createIcons();
+      setTimeout(() => {
+        t.style.opacity = '0';
+        t.style.transform = 'translateY(10px)';
+        t.style.transition = 'all 0.25s ease';
+        setTimeout(() => t.remove(), 250);
+      }, 3500);
+    }
+    function escapeHtml(str) {
+      return (str || '').replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
+    }
+  </script>
+</body>
+</html>

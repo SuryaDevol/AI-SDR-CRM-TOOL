@@ -1,0 +1,78 @@
+{
+  "companyProfile": {
+    "companyName": "OmniReach AI",
+    "senderName": "Alex Morgan",
+    "senderTitle": "Head of AI Automation & Growth",
+    "senderEmail": "alex.morgan@omnireach.ai",
+    "senderPhone": "+1 (800) 555-0199",
+    "calendarLink": "https://calendar.omnireach.ai/alex-demo",
+    "valueProposition": "OmniReach AI deploys autonomous multi-channel AI SDR agents that research prospects, send hyper-personalized emails, connect on LinkedIn, and handle live voice calls to book 3.4x more meetings."
+  },
+  "channels": {
+    "email": {
+      "provider": "Resend / SendGrid / SMTP",
+      "status": "Connected",
+      "dailyLimit": 150,
+      "currentSentToday": 24,
+      "warmupMode": true,
+      "deliverabilityScore": 98.4,
+      "spfStatus": "Valid",
+      "dkimStatus": "Valid",
+      "dmarcStatus": "Strict Policy"
+    },
+    "linkedin": {
+      "status": "Connected",
+      "accountName": "Alex Morgan (OmniReach)",
+      "dailyInviteLimit": 25,
+      "currentInvitesToday": 8,
+      "antiBanSafetyDelay": "45-90s",
+      "inMailCreditsRemaining": 42
+    },
+    "call": {
+      "status": "Active & Ready",
+      "provider": "Twilio + WebRTC Audio Engine",
+      "aiVoice": "Nova / Rachel (Natural Executive Cadence)",
+      "sttEngine": "Deepgram Nova-2 Real-Time",
+      "ttsEngine": "ElevenLabs Turbo v2.5 / WebSpeech",
+      "phoneCallerId": "+1 (415) 890-7621",
+      "autoCalendarBooking": true,
+      "callRecording": true,
+      "sentimentScoring": true,
+      "maxCallDurationMinutes": 5
+    },
+    "aircall": {
+      "status": "Connected & Synchronized",
+      "provider": "Aircall CTI & Smart Dialer",
+      "apiId": "ac_app_live_892110",
+      "apiToken": "ak_sec_7729104b901",
+      "defaultNumber": "+1 (415) 890-7621",
+      "activeLineLabel": "US Enterprise SDR Priority Line",
+      "inboxToRingtoneEnabled": true,
+      "triggerOnEmailOpensThreshold": 2,
+      "triggerOnLinkClicks": true,
+      "screenPopContextEnabled": true,
+      "aiBattlecardEnabled": true,
+      "autoLogRecordings": true,
+      "oneClickFollowupsEnabled": true
+    }
+  },
+  "autonomousSwarm": {
+    "enabled": true,
+    "agents": [
+      { "id": "researcher", "name": "Prospector & Researcher Agent", "status": "Active", "tasksCompleted": 142 },
+      { "id": "strategist", "name": "Channel Timing & ICP Strategist", "status": "Active", "tasksCompleted": 98 },
+      { "id": "copywriter", "name": "Psychographic Copywriter Agent", "status": "Active", "tasksCompleted": 184 },
+      { "id": "voice_caller", "name": "Conversational Voice Caller Agent", "status": "Standby", "tasksCompleted": 37 },
+      { "id": "crm_sync", "name": "Real-time CRM Pipeline Sync Agent", "status": "Active", "tasksCompleted": 265 }
+    ],
+    "autoEnrollICPThreshold": 85,
+    "workingHours": "09:00 - 17:00 (Prospect Timezone)",
+    "requireHumanApprovalForCall": false
+  },
+  "compliance": {
+    "tcpaDncScrubbing": true,
+    "antiSpamKeywordFilter": true,
+    "oneClickUnsubscribe": true,
+    "gdprCcpaCompliant": true
+  }
+}

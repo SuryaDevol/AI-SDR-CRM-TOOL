@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Trading Connections — Beginner Guide | BREAKING MONEY</title>
+  <meta name="description" content="Beginner guide to connecting Claude, Cursor, ChatGPT, and Google Antigravity to Indian brokers: INDmoney, Zerodha Kite, Angel One, and Groww via MCP.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              cyan: '#06B6D4',
+              emerald: '#10B981',
+              indigo: '#6366F1',
+              dark: '#080C14',
+              card: '#0D1424'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#080C14] text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-slate-950">
+
+  <!-- Background decorative grid -->
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none opacity-40 z-0"></div>
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-cyan-500/10 via-emerald-500/5 to-transparent blur-3xl pointer-events-none z-0"></div>
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#080C14]/80 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-cyan-500/20">
+          <i data-lucide="zap" class="w-5 h-5 fill-slate-950"></i>
+        </div>
+        <div>
+          <span class="text-xs font-black tracking-widest uppercase text-cyan-400 block leading-tight">BREAKING MONEY</span>
+          <span class="text-base font-bold text-white tracking-tight leading-tight">AI Trading Connections</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
+        <a href="#matcher-section" class="hover:text-cyan-400 transition-colors">Matrix Matcher</a>
+        <a href="#brokers-section" class="hover:text-cyan-400 transition-colors">Brokers</a>
+        <a href="#clients-section" class="hover:text-cyan-400 transition-colors">AI Assistants</a>
+        <a href="#generator-section" class="hover:text-cyan-400 transition-colors">Config Generator</a>
+        <a href="#security-section" class="hover:text-cyan-400 transition-colors">Security Rules</a>
+        <a href="#links-section" class="hover:text-cyan-400 transition-colors">Official Links</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#matcher-section" class="px-3.5 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold text-xs hover:bg-cyan-400 transition-all shadow-md shadow-cyan-500/20">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20">
+
+    <!-- Hero Section -->
+    <section class="text-center space-y-6 pt-6 pb-2">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-medium">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 pulse-indicator"></span>
+        <span>Beginner-Friendly MCP Reference Guide</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+        Connect Your AI to <br class="hidden sm:inline"/>
+        <span class="bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">
+          Indian Stock Brokers
+        </span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-400 leading-relaxed">
+        The ultimate quickstart guide connecting <strong>Claude</strong>, <strong>Cursor</strong>, <strong>ChatGPT</strong>, and <strong>Google Antigravity</strong> to <strong>INDmoney</strong>, <strong>Zerodha</strong>, <strong>Angel One</strong>, and <strong>Groww</strong>.
+      </p>
+
+      <!-- Quick Platform Chips -->
+      <div class="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs font-medium text-slate-300">
+        <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-1.5">
+          <i data-lucide="bot" class="w-3.5 h-3.5 text-cyan-400"></i> Claude
+        </span>
+        <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-1.5">
+          <i data-lucide="code-2" class="w-3.5 h-3.5 text-blue-400"></i> Cursor
+        </span>
+        <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-1.5">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-400"></i> Google Antigravity
+        </span>
+        <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-1.5">
+          <i data-lucide="cpu" class="w-3.5 h-3.5 text-emerald-400"></i> ChatGPT
+        </span>
+        <span class="text-slate-600 font-bold mx-1">×</span>
+        <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-1.5 text-emerald-300">
+          INDmoney
+        </span>
+        <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-1.5 text-blue-300">
+          Zerodha Kite
+        </span>
+        <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-1.5 text-amber-300">
+          Angel One
+        </span>
+        <span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 flex items-center gap-1.5 text-purple-300">
+          Groww
+        </span>
+      </div>
+
+      <!-- MCP Mental Model Banner -->
+      <div class="max-w-3xl mx-auto glass-card rounded-2xl p-6 border border-slate-800 text-left mt-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="network" class="w-5 h-5"></i>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-base font-bold text-white flex items-center gap-2">
+              <span>Start Here: What is MCP?</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 uppercase tracking-wider font-semibold">Model Context Protocol</span>
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              You do <strong>not</strong> need to understand the protocol deeply. Think of MCP simply as a <strong>standardized universal bridge</strong> that lets an AI app talk directly and safely to an external broker service.
+            </p>
+            <div class="pt-2 flex flex-wrap items-center gap-2 text-xs font-mono font-semibold">
+              <span class="px-2.5 py-1 rounded bg-slate-950 text-cyan-300 border border-slate-800">AI App</span>
+              <span class="text-slate-500">→</span>
+              <span class="px-2.5 py-1 rounded bg-slate-950 text-emerald-300 border border-slate-800">MCP Bridge</span>
+              <span class="text-slate-500">→</span>
+              <span class="px-2.5 py-1 rounded bg-slate-950 text-blue-300 border border-slate-800">Broker API</span>
+              <span class="text-slate-500">→</span>
+              <span class="px-2.5 py-1 rounded bg-slate-950 text-indigo-300 border border-slate-800">Your Account</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: Interactive Connection Matcher -->
+    <section id="matcher-section" class="space-y-6 pt-4">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-800/80 pb-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">Interactive Matcher</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Find Your Connection Blueprint</h2>
+        </div>
+        <p class="text-xs text-slate-400 max-w-sm">
+          Select an AI Client and Broker below to instantly preview the architecture, configuration snippet, and step-by-step setup.
+        </p>
+      </div>
+
+      <!-- Selector Controls -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Client selector -->
+        <div class="space-y-3">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <i data-lucide="bot" class="w-4 h-4 text-cyan-400"></i>
+            <span>1. Select AI Assistant</span>
+          </label>
+          <div id="client-selector-buttons" class="grid grid-cols-2 gap-2.5">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Broker selector -->
+        <div class="space-y-3">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <i data-lucide="building-2" class="w-4 h-4 text-emerald-400"></i>
+            <span>2. Select Broker</span>
+          </label>
+          <div id="broker-selector-buttons" class="grid grid-cols-2 gap-2.5">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Matcher Result Box -->
+      <div id="matcher-result" class="transition-all duration-300">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Section 2: Broker Deep Dives -->
+    <section id="brokers-section" class="space-y-6 pt-6">
+      <div class="border-b border-slate-800/80 pb-4">
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Broker Analysis</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Supported Indian Brokers</h2>
+        <p class="text-xs text-slate-400 mt-1">
+          Detailed overview of official MCP support, authentication types, and available capabilities.
+        </p>
+      </div>
+
+      <div id="broker-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Section 3: AI Assistants Deep Dive -->
+    <section id="clients-section" class="space-y-6 pt-6">
+      <div class="border-b border-slate-800/80 pb-4">
+        <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">AI Environments</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">AI Clients & Config Locations</h2>
+        <p class="text-xs text-slate-400 mt-1">
+          Where to place your configuration files across Claude, Cursor, Google Antigravity, and OpenAI.
+        </p>
+      </div>
+
+      <div id="client-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Section 4: Live Config Generator -->
+    <section id="generator-section" class="space-y-6 pt-6">
+      <div class="border-b border-slate-800/80 pb-4">
+        <span class="text-xs font-bold uppercase tracking-widest text-indigo-400">Configuration Tool</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Interactive MCP Config Generator</h2>
+        <p class="text-xs text-slate-400 mt-1">
+          Build a ready-to-paste JSON snippet customized to your specific environment and security needs.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 lg:p-8 border border-slate-800 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Generator Controls Form -->
+        <form id="generator-form" class="lg:col-span-5 space-y-5" onsubmit="event.preventDefault();">
+          <div class="space-y-1.5">
+            <label for="gen-client" class="text-xs font-semibold text-slate-300">Target Assistant</label>
+            <select id="gen-client" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+              <option value="antigravity">Google Antigravity (mcp_config.json)</option>
+              <option value="claude">Claude Desktop (claude_desktop_config.json)</option>
+              <option value="cursor">Cursor IDE (.cursor/mcp.json)</option>
+              <option value="custom">Generic MCP JSON</option>
+            </select>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="gen-broker" class="text-xs font-semibold text-slate-300">Target Broker</label>
+            <select id="gen-broker" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+              <option value="zerodha">Zerodha (Kite MCP)</option>
+              <option value="indmoney">INDmoney (Hosted Remote)</option>
+              <option value="angelone">Angel One (SmartAPI Python Bridge)</option>
+              <option value="groww">Groww (Trade API Python Bridge)</option>
+            </select>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="gen-mode" class="text-xs font-semibold text-slate-300">Connection Mode</label>
+            <select id="gen-mode" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+              <option value="remote">Remote Hosted Endpoint (SSE/HTTP)</option>
+              <option value="stdio">Local Python / uvx Process (stdio)</option>
+            </select>
+          </div>
+
+          <div class="pt-2">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="gen-readonly" checked class="w-4 h-4 rounded bg-slate-950 border-slate-700 text-cyan-500 focus:ring-0">
+              <div>
+                <div class="text-xs font-semibold text-white">Enforce Read-Only Mode (Recommended)</div>
+                <div class="text-[11px] text-slate-400">Disables order placement endpoints in tools.</div>
+              </div>
+            </label>
+          </div>
+        </form>
+
+        <!-- Output Code Display -->
+        <div class="lg:col-span-7 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Generated Configuration</span>
+            <button id="copy-gen-btn" class="px-3.5 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/30 text-cyan-300 text-xs font-semibold flex items-center gap-1.5 transition-all">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Copy Config</span>
+            </button>
+          </div>
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 overflow-x-auto text-xs font-mono text-cyan-300">
+            <pre><code id="gen-output-code"></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Python FastMCP Starter Bridge -->
+    <section class="space-y-6 pt-6">
+      <div class="border-b border-slate-800/80 pb-4">
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">For Developers</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Custom Python FastMCP Bridge Template</h2>
+        <p class="text-xs text-slate-400 mt-1">
+          For brokers without hosted remote MCP servers (Angel One SmartAPI & Groww Trade API), here is how a lightweight FastMCP bridge is implemented.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-300 font-mono">
+            <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
+            <span>broker_mcp_bridge.py</span>
+          </div>
+          <button 
+            onclick="copyToClipboard(TRADING_DATA.pythonBridgeSnippet, 'Python bridge template copied!')"
+            class="px-3 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 text-xs font-semibold flex items-center gap-1.5 transition-all">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span>Copy Python Script</span>
+          </button>
+        </div>
+
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 overflow-x-auto text-xs font-mono text-slate-300 max-h-96">
+          <pre><code>"""
+Sample Lightweight FastMCP Bridge for Indian Brokers (Angel One / Groww)
+Runs as a local MCP server exposing safe, read-only tools to your AI assistant.
+Install: pip install mcp uvicorn pydantic
+"""
+
+from mcp.server.fastmcp import FastMCP
+import os
+
+# Initialize FastMCP Server
+mcp = FastMCP("IndianBrokerBridge")
+
+@mcp.tool()
+def get_portfolio_summary() -> dict:
+    """Fetch current holdings, total portfolio value, and P&L."""
+    # Connect with official broker SDK (e.g. SmartAPI or Groww SDK)
+    return {
+        "status": "success",
+        "total_value": 450200.50,
+        "unrealized_pnl": 34120.00,
+        "holdings_count": 8,
+        "top_holdings": ["RELIANCE", "TCS", "INFY", "HDFCBANK"]
+    }
+
+@mcp.tool()
+def get_market_quote(symbol: str) -> dict:
+    """Get live LTP, OHLC, and volume for an NSE/BSE symbol."""
+    return {
+        "symbol": symbol.upper(),
+        "ltp": 2980.50,
+        "change_percent": 1.45,
+        "volume": 2450000,
+        "day_high": 2995.00,
+        "day_low": 2940.10
+    }
+
+if __name__ == "__main__":
+    # Runs over stdio for Claude Desktop, Cursor, or Antigravity
+    mcp.run()</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Security Checklist -->
+    <section id="security-section" class="space-y-6 pt-6">
+      <div class="border-b border-slate-800/80 pb-4">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Risk Safeguards</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">One Important Rule & Security Audit</h2>
+        <p class="text-xs text-slate-400 mt-1">
+          Never expose broker credentials directly to an AI prompt. Follow these 5 cardinal rules.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 lg:p-8 border border-slate-800 space-y-6">
+        
+        <!-- Score Bar Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+          <div>
+            <div class="text-xs text-slate-400 uppercase font-semibold">Your Setup Safety Score</div>
+            <div class="text-3xl font-black text-white mt-1 flex items-center gap-2">
+              <span id="security-score-text">60%</span>
+              <span id="security-grade-badge" class="px-3 py-1 text-xs rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold">
+                Moderate • Needs Hard Stops
+              </span>
+            </div>
+          </div>
+          <div class="w-full sm:w-64 bg-slate-950 h-3 rounded-full border border-slate-800 overflow-hidden">
+            <div id="security-score-bar" class="h-full bg-amber-500 transition-all duration-300" style="width: 60%"></div>
+          </div>
+        </div>
+
+        <!-- Interactive Checklist Items -->
+        <div class="space-y-3.5">
+          <label class="flex items-start gap-3.5 p-3 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors">
+            <input type="checkbox" checked class="security-checkbox mt-0.5 w-4 h-4 rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-0">
+            <div>
+              <strong class="text-xs font-semibold text-white block">Rule 1: Never paste secrets into AI prompts</strong>
+              <span class="text-xs text-slate-400">Do not give API Secret, Trading PIN, MPIN, or password directly into the chat conversation. Store them inside local configuration files or environment variables.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start gap-3.5 p-3 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors">
+            <input type="checkbox" checked class="security-checkbox mt-0.5 w-4 h-4 rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-0">
+            <div>
+              <strong class="text-xs font-semibold text-white block">Rule 2: Read-Only First</strong>
+              <span class="text-xs text-slate-400">Always start with read-only portfolio tracking and market data feeds. Only unlock trade execution after thorough manual testing.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start gap-3.5 p-3 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors">
+            <input type="checkbox" checked class="security-checkbox mt-0.5 w-4 h-4 rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-0">
+            <div>
+              <strong class="text-xs font-semibold text-white block">Rule 3: Local TOTP Generation</strong>
+              <span class="text-xs text-slate-400">For brokers requiring TOTP (Angel One), generate 6-digit OTPs using a local library (like <code>pyotp</code>) rather than sending TOTP secrets across the web.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start gap-3.5 p-3 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors">
+            <input type="checkbox" class="security-checkbox mt-0.5 w-4 h-4 rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-0">
+            <div>
+              <strong class="text-xs font-semibold text-white block">Rule 4: Programmatic Hard Order Caps</strong>
+              <span class="text-xs text-slate-400">Enforce maximum quantity and capital limits in your bridge code so a model hallucination cannot place an oversized order.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start gap-3.5 p-3 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors">
+            <input type="checkbox" class="security-checkbox mt-0.5 w-4 h-4 rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-0">
+            <div>
+              <strong class="text-xs font-semibold text-white block">Rule 5: Instant Kill Switch</strong>
+              <span class="text-xs text-slate-400">Have a simple command or button to kill the MCP process or revoke the broker API token instantly during unexpected market volatility.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Official Links Directory -->
+    <section id="links-section" class="space-y-6 pt-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-800/80 pb-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">Verified Resources</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Official Documentation & Links</h2>
+        </div>
+        
+        <!-- Search bar -->
+        <div class="relative w-full sm:w-72">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input 
+            type="text" 
+            id="links-search" 
+            placeholder="Search docs, APIs, URLs..." 
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500">
+        </div>
+      </div>
+
+      <!-- Filter chips -->
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <button class="link-filter-chip active-chip px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 font-medium hover:text-white" data-filter="all">All (20)</button>
+        <button class="link-filter-chip px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 font-medium hover:text-white" data-filter="broker">Brokers</button>
+        <button class="link-filter-chip px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 font-medium hover:text-white" data-filter="ai client">AI Platforms</button>
+        <button class="link-filter-chip px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 font-medium hover:text-white" data-filter="hosted server">Hosted MCP</button>
+        <button class="link-filter-chip px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 font-medium hover:text-white" data-filter="api docs">API Specs</button>
+      </div>
+
+      <!-- Links Table Container -->
+      <div class="glass-card rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-950/80 border-b border-slate-800 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                <th class="px-6 py-3.5">Resource Title & Endpoint</th>
+                <th class="px-6 py-3.5">Category</th>
+                <th class="px-6 py-3.5">Type</th>
+                <th class="px-6 py-3.5 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="links-table-body" class="divide-y divide-slate-800/40 text-xs">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-12 pb-8 border-t border-slate-800 text-center space-y-4">
+      <div class="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-cyan-400">
+        <i data-lucide="zap" class="w-4 h-4"></i>
+        <span>BREAKING MONEY • AI TRADING CONNECTIONS</span>
+      </div>
+      <p class="text-xs text-slate-500 max-w-xl mx-auto">
+        Disclaimer: This portal is created for educational and developer workflow automation purposes. Connecting AI agents to financial accounts involves real risk. Always test in read-only and simulation modes before automated executions.
+      </p>
+      <div class="text-[11px] text-slate-600">
+        Google Antigravity • Claude • Cursor • ChatGPT • Zerodha Kite • INDmoney • Angel One SmartAPI • Groww
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Floating Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

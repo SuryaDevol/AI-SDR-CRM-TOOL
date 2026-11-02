@@ -1,0 +1,34 @@
+{
+  "hotkey": "ctrl+space",
+  "toggle_hotkey": "ctrl+alt+space",
+  "model": "small",
+  "device": "auto",
+  "language": "en",
+  "beam_size": 5,
+  "remove_fillers": true,
+  "add_trailing_space": true,
+  "sounds": true,
+  "min_duration_sec": 0.3,
+  "max_duration_sec": 360,
+  "restore_clipboard": true,
+  "vocabulary": [
+    "VoiceType",
+    "OmniReach",
+    "27x.ai",
+    "Aircall",
+    "SDR Swarm",
+    "CRM",
+    "Anthropic",
+    "Pipeline"
+  ],
+  "replacements": {
+    "new line": "\n",
+    "new paragraph": "\n\n",
+    "smiley face": "😊",
+    "thumbs up": "👍",
+    "question mark": "?",
+    "exclamation mark": "!",
+    "at rate": "@",
+    "rocket ship": "🚀"
+  }
+}

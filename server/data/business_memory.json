@@ -1,0 +1,39 @@
+{
+  "websiteUrl": "https://omnireach.ai",
+  "companyName": "OmniReach AI",
+  "tagline": "Autonomous Multi-Channel AI SDR Platform",
+  "corePositioning": "OmniReach AI automates multi-channel research, cold emails, LinkedIn touches, and Aircall voice calling to 3x executive meetings.",
+  "valueProposition": "Cuts outbound prospecting time by 80% with autonomous AI intelligence.",
+  "keyProducts": [
+    "Multi-Agent SDR Swarm",
+    "Aircall Voice CTI Bridge",
+    "AI Account Deep Enrichment"
+  ],
+  "icps": [],
+  "brandTone": {
+    "style": "Consultative and authoritative",
+    "pace": "Direct (<90 words)",
+    "formality": "Warm executive",
+    "powerPhrases": [
+      "decouple quota from headcount",
+      "3.4x more meetings"
+    ],
+    "bannedPhrases": [
+      "hope this email finds you well",
+      "just checking in"
+    ]
+  },
+  "preferences": {
+    "autoSyncToEmail": true,
+    "autoSyncToLinkedIn": true,
+    "autoSyncToVoice": true
+  },
+  "conversationHistory": [
+    {
+      "sender": "assistant",
+      "text": "Memory refreshed. Drop your website URL or describe your buyer to start learning!",
+      "timestamp": "09:55 PM"
+    }
+  ],
+  "updatedAt": "2026-10-31T16:25:38.002Z"
+}
